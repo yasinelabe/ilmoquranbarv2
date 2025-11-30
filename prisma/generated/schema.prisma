@@ -1,0 +1,136 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+// --- Management Side ---
+model User {
+  id        Int      @id @default(autoincrement())
+  fullname  String
+  username  String   @unique
+  password  String
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+// --- Structure ---
+model Country {
+  id      Int      @id @default(autoincrement())
+  name    String
+  regions Region[]
+}
+
+model Region {
+  id        Int        @id @default(autoincrement())
+  name      String
+  countryId Int
+  country   Country    @relation(fields: [countryId], references: [id])
+  districts District[]
+}
+
+model District {
+  id       Int      @id @default(autoincrement())
+  name     String
+  regionId Int
+  region   Region   @relation(fields: [regionId], references: [id])
+  mosques  Mosque[]
+}
+
+model Mosque {
+  id           Int           @id @default(autoincrement())
+  name         String
+  image        String?
+  imam         String?
+  districtId   Int
+  district     District      @relation(fields: [districtId], references: [id])
+  quranCircles QuranCircle[]
+}
+
+model QuranCircle {
+  id        Int        @id @default(autoincrement())
+  name      String
+  mosqueId  Int
+  mosque    Mosque     @relation(fields: [mosqueId], references: [id])
+  teachers  Teacher[]
+  students  Student[]
+  campaigns Campaign[]
+}
+
+model Teacher {
+  id            Int         @id @default(autoincrement())
+  fullname      String
+  image         String?
+  sex           String
+  bio           String?
+  quranCircleId Int
+  quranCircle   QuranCircle @relation(fields: [quranCircleId], references: [id])
+}
+
+model Student {
+  id            Int         @id @default(autoincrement())
+  fullname      String
+  image         String?
+  sex           String
+  age           Int
+  quranCircleId Int
+  parentId      Int?
+  quranCircle   QuranCircle @relation(fields: [quranCircleId], references: [id])
+  parent        Parent?     @relation(fields: [parentId], references: [id])
+  campaigns     Campaign[]
+}
+
+model Parent {
+  id          Int       @id @default(autoincrement())
+  fullname    String
+  phone       String
+  description String?
+  students    Student[]
+}
+
+// --- Donation Management ---
+model Campaign {
+  id              Int           @id @default(autoincrement())
+  name            String
+  type            String // 'STUDENT_SPONSORSHIP' | 'CIRCLE_SPONSORSHIP'
+  studentId       Int?
+  quranCircleId   Int?
+  targetAmount    Decimal       @db.Decimal(10, 2)
+  collectedAmount Decimal       @default(0) @db.Decimal(10, 2)
+  image           String?
+  description     String        @db.Text
+  createdAt       DateTime      @default(now())
+  isComplete      Boolean       @default(false)
+  student         Student?      @relation(fields: [studentId], references: [id])
+  quranCircle     QuranCircle?  @relation(fields: [quranCircleId], references: [id])
+  transactions    Transaction[]
+}
+
+model Sponsor {
+  id           Int           @id @default(autoincrement())
+  fullname     String
+  phone        String
+  email        String?
+  transactions Transaction[]
+}
+
+model Transaction {
+  id          Int      @id @default(autoincrement())
+  sponsorId   Int
+  campaignId  Int
+  amount      Decimal  @db.Decimal(10, 2)
+  referenceId String   @unique // WaafiPay Reference
+  status      String   @default("PENDING") // PENDING, COMPLETED, FAILED
+  createdAt   DateTime @default(now())
+  sponsor     Sponsor  @relation(fields: [sponsorId], references: [id])
+  campaign    Campaign @relation(fields: [campaignId], references: [id])
+}

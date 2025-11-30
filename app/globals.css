@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------
+   Core Theme Tokens
+   ------------------------------------------------------------ */
+
+:root {
+  /* Brand colors */
+  --brand-green: 8 89 54;     /* #085936 */
+  --brand-gold: 219 164 55;   /* #dba437 */
+
+  /* Light mode base colors */
+  --background: 239 238 238;  /* #efeeee */
+  --foreground: 23 23 23;     /* #171717 */
+
+  /* Surfaces */
+  --surface: 255 255 255;
+  --surface-contrast: 245 245 245;
+
+  /* Text roles (light mode) */
+  --text-primary: 23 23 23;
+  --text-secondary: 80 80 80;
+  --text-muted: 120 120 120;
+
+  /* Components */
+  --card-radius: 1rem;
+    --border-color: 220 220 220;
+}
+
+.dark {
+  /* Match Tailwind bg-gray-800 (31 41 55) */
+  --background: 31 41 55;
+  --foreground: 243 244 246; /* near gray-100 for good readability */
+
+  /* Surfaces */
+  --surface: 26 33 46; /* a bit darker than background (gray-850-ish) */
+  --surface-contrast: 17 24 39; /* close to gray-900 */
+
+  /* Text roles */
+  --text-primary: 255 255 255;       /* full white for maximum clarity */
+  --text-secondary: 209 213 219;     /* gray-300 */
+  --text-muted: 156 163 175;         /* gray-400 */
+
+  --card-radius: 1rem;
+    --border-color: 55 65 81;
+}
+
+/* ------------------------------------------------------------
+   Global Resets
+   ------------------------------------------------------------ */
+
+html, body {
+  padding: 0;
+  margin: 0;
+  background: rgb(var(--background));
+  font-family: system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.bg-plain { 
+  background-color: rgb(var(--background)); 
+}
+
+.text-plain { 
+  color: rgb(var(--foreground)); 
+}
+
+.surface { 
+  background-color: rgb(var(--surface)); 
+}
+
+.surface-contrast { 
+  background-color: rgb(var(--surface-contrast)); 
+}
+
+/* Brand utilities */
+.text-brand-green { color: rgb(var(--brand-green)); }
+.text-brand-gold { color: rgb(var(--brand-gold)); }
+.bg-brand-green { background-color: rgb(var(--brand-green)); }
+.bg-brand-gold { background-color: rgb(var(--brand-gold)); }
+
+/* ------------------------------------------------------------
+   Components / Cards
+   ------------------------------------------------------------ */
+
+.card {
+  border-radius: var(--card-radius);
+  border: 1px solid rgba(0,0,0,0.05);
+  background: rgb(var(--surface));
+}
+
+.dark .card {
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgb(var(--surface));
+}
+
+/* ------------------------------------------------------------
+   Focus + Accessibility
+   ------------------------------------------------------------ */
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  border-radius: var(--card-radius);
+  box-shadow: 0 0 0 4px rgba(219,164,55,0.12); /* brand gold halo */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
+/* ------------------------------------------------------------
+   Additional Tailwind Layer Utilities
+   ------------------------------------------------------------ */
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
