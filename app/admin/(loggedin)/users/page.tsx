@@ -11,7 +11,7 @@ export default async function UsersPage() {
         <div>
             {/* Header */}
             <div className="flex justify-between items-center mb-8">
-                <h1 className="text-3xl font-bold text-brand-green dark:text-white">
+                <h1 className="text-3xl font-bold text-brand-gold dark:text-white">
                     Users
                 </h1>
 

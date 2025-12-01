@@ -12,7 +12,7 @@ export default async function CampaignList() {
 
       {/* Header */}
       <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold text-brand-green dark:text-white">
+        <h1 className="text-3xl font-bold text-brand-gold dark:text-white">
           Campaigns
         </h1>
 
@@ -88,7 +88,7 @@ bg-brand-gold text-white px-4 py-2 rounded-xl hover:bg-[#c9952f] transition-colo
                     ${Number(c.targetAmount).toLocaleString()}
                   </td>
 
-                  <td className="p-4 text-brand-green dark:text-brand-gold font-bold">
+                  <td className="p-4 text-brand-gold dark:text-brand-gold font-bold">
                     ${Number(c.collectedAmount).toLocaleString()}
                   </td>
 
@@ -108,7 +108,7 @@ bg-brand-gold text-white px-4 py-2 rounded-xl hover:bg-[#c9952f] transition-colo
                   <td className="p-4">
                     <Link
                       href={`/admin/campaigns/${c.id}`}
-                      className="text-brand-green dark:text-brand-gold font-bold hover:underline"
+                      className="text-brand-gold dark:text-brand-gold font-bold hover:underline"
                     >
                       Edit
                     </Link>

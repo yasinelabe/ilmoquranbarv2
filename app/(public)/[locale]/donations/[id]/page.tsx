@@ -3,9 +3,11 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { MapPin, User, GraduationCap } from 'lucide-react';
 import DonationForm from './DonationForm';
+import { getLocale } from '@/lib/locales';
 
-export default async function CampaignDetailPage({ params }: { params: { id: string } }) {
-    const id = (await params).id;
+export default async function CampaignDetailPage({ params }: { params: { locale: 'en' | 'so' | 'ar',id: string } }) {
+    const {locale,id} = await params
+    const dict = await getLocale(locale);
     const campaign = await prisma.campaign.findUnique({
         where: { id: Number(id) },
         include: {
@@ -44,7 +46,7 @@ export default async function CampaignDetailPage({ params }: { params: { id: str
                     {/* Main Card */}
                     <div className="p-8 rounded-3xl surface-contrast border" style={{ borderColor: "rgb(var(--border-color))" }}>
                         {/* Title */}
-                        <h1 className="text-4xl font-extrabold text-brand-green dark:text-white mb-3">
+                        <h1 className="text-4xl font-extrabold text-brand-gold dark:text-white mb-3">
                             {campaign.name}
                         </h1>
 
@@ -68,7 +70,7 @@ export default async function CampaignDetailPage({ params }: { params: { id: str
 
 
                             ) : (
-                                <GraduationCap size={72} className="text-brand-green dark:text-brand-gold" />
+                                <GraduationCap size={72} className="text-brand-gold dark:text-brand-gold" />
                             )}
                         </div>
 
@@ -85,13 +87,13 @@ export default async function CampaignDetailPage({ params }: { params: { id: str
                             <span className="text-plain dark:text-gray-200">
                                 ${collected.toLocaleString()}
                             </span>
-                            <span className="text-brand-green dark:text-brand-gold">
+                            <span className="text-brand-gold dark:text-brand-gold">
                                 ${target.toLocaleString()} Goal
                             </span>
                         </div>
 
                         {/* Description */}
-                        <h2 className="text-2xl font-extrabold text-brand-green dark:text-brand-gold mt-10 mb-4">
+                        <h2 className="text-2xl font-extrabold text-brand-gold dark:text-brand-gold mt-10 mb-4">
                             About the Campaign
                         </h2>
 
@@ -106,7 +108,7 @@ export default async function CampaignDetailPage({ params }: { params: { id: str
 
                         {campaign.student && (
                             <>
-                                <h3 className="text-xl font-extrabold text-brand-green dark:text-brand-gold mb-4 flex items-center" >
+                                <h3 className="text-xl font-extrabold text-brand-gold dark:text-brand-gold mb-4 flex items-center" >
                                     <User size={20} className="mr-2" /> Student Profile
                                 </h3>
 
@@ -120,7 +122,7 @@ export default async function CampaignDetailPage({ params }: { params: { id: str
 
                         {campaign.quranCircle && (
                             <>
-                                <h3 className="text-xl font-extrabold text-brand-green dark:text-brand-gold mb-4 flex items-center ">
+                                <h3 className="text-xl font-extrabold text-brand-gold dark:text-brand-gold mb-4 flex items-center ">
                                     <MapPin size={20} className="mr-2" /> Location Details
                                 </h3>
 
@@ -147,11 +149,7 @@ export default async function CampaignDetailPage({ params }: { params: { id: str
                 {/* Sticky Donation Form */}
                 <div className="lg:col-span-1">
                     <div className="lg:sticky lg:top-24">
-                        <DonationForm campaignId={campaign.id} />
-
-                        <p className="mt-4 text-center text-sm text-gray-500 dark:text-gray-400">
-                            Secure payment via WaafiPay.
-                        </p>
+                        <DonationForm campaignId={campaign.id} dict={dict} />
                     </div>
                 </div>
 

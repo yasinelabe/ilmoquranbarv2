@@ -7,7 +7,7 @@ export function Button({ children, variant = 'primary', ...props }: { children?:
     const base = 'inline-flex items-center justify-center font-semibold rounded-2xl px-5 py-2.5 transition-colors'
     const styles: Record<ButtonVariant, string> = {
         primary: `${base} bg-brand-green text-white hover:bg-[rgba(8,89,54,0.9)]`,
-        ghost: `${base} bg-transparent text-brand-green border border-transparent hover:bg-surface-contrast`,
+        ghost: `${base} bg-transparent text-brand-gold border border-transparent hover:bg-surface-contrast`,
         gold: `${base} bg-brand-gold text-white hover:bg-[rgba(219,164,55,0.9)]`,
     }
 

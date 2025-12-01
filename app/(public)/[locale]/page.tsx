@@ -3,10 +3,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Container } from '@/components/ui'
 import CampaignSection from '@/components/public/CampaignSection'
-import Hero from '../../public/hero2.png'
+import Hero from '../../../public/hero2.png'
 import FaqSection from '@/components/public/Faq'
+import { getLocale } from '@/lib/locales'
+import Badge from '@/components/public/Badge'
 
-export default async function LandingPage() {
+export default async function LandingPage({ params }: { params: { locale: 'en' | 'so' | 'ar' } | Promise<{ locale: 'en' | 'so' | 'ar' }> }) {
+  const { locale } = await params;
+  const dict = await getLocale(locale);
   const campaignsRaw = await prisma.campaign.findMany({
     where: { isComplete: false },
     take: 3,
@@ -28,35 +32,30 @@ export default async function LandingPage() {
           {/* LEFT TEXT CONTENT */}
           <div className="md:w-1/2 space-y-6 animate-fadeIn">
 
-            {/* Badge */}
-            <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-brand-green/10 text-brand-green font-semibold text-sm">
-              Empower a Child with Qur’an
-            </div>
+            <Badge dict={dict} />
 
             {/* Heading */}
             <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
-              Give the <span className="text-brand-green dark:text-brand-gold">Gift of Qur'an</span>
-              <br />
-              and Change a Life Forever
+              {dict.hero.title}
+              {/* Give the <span className='text-brand-gold dark:text-brand-gold'>Gift of Qur'an</span><br />and Change a Life Forever */}
             </h1>
 
             {/* Description */}
             <p className="text-lg text-plain leading-relaxed">
-              IlmoQuranbar establishes free Quran circles in mosques — sponsoring teachers
-              and providing the tools needed to reach thousands of children.
+              {dict.hero.subtitle}
             </p>
 
             {/* CTA Buttons */}
             <div className="flex gap-4 pt-3">
               <Link href="/donations">
                 <button className="px-8 py-3 rounded-xl font-bold bg-brand-gold text-white shadow-md hover:bg-brand-dark transition">
-                  Sponsor a Student
+                  {dict.hero.cta}
                 </button>
               </Link>
 
               <Link href="/about" className="hidden md:inline-block">
                 <button className="px-6 py-3 text-plain rounded-xl font-semibold border border-gray-300 dark:border-gray-700    transition">
-                  Learn More
+                  {dict.hero.more}
                 </button>
               </Link>
             </div>
@@ -79,8 +78,7 @@ export default async function LandingPage() {
       </section>
       <Container className="py-8">
 
-        <CampaignSection activeCampaigns={activeCampaigns} />
-
+        <CampaignSection activeCampaigns={activeCampaigns} dict={dict} locale={locale} />
 
       </Container>
       <section className="py-16 md:py-24 px-4 w-full bg-brand-green">
@@ -98,50 +96,55 @@ export default async function LandingPage() {
       "
           >
             <h2 className="text-3xl font-extrabold text-center mb-3">
-              Join Our Community
+              {dict.community.title}
             </h2>
 
             <p className="text-center text-white/80 mb-8 text-lg text-balance">
-              Get updates on our progress, new Quran circles, and sponsorship opportunities.
+              {dict.community.description}
             </p>
 
             {/* Form */}
-            <form className="flex flex-col sm:flex-row items-center gap-3">
+            <form className="flex flex-col gap-3 sm:flex-row sm:items-stretch sm:gap-0">
               <input
                 type="email"
-                placeholder="Enter your best email"
+                placeholder={dict.community.emailPlaceholder}
                 className="
-            w-full 
-            p-4 
-            rounded-xl 
-            sm:rounded-l-xl sm:rounded-r-none 
-            bg-white/90 text-black 
-            placeholder-black/50
-            outline-none border-none
-          "
+    w-full 
+    p-4 
+    rounded-xl
+    sm:ltr:rounded-l-xl sm:ltr:rounded-r-none
+    sm:rtl:rounded-r-xl sm:rtl:rounded-l-none
+    bg-white/90 text-black 
+    placeholder-black/50
+    outline-none
+  "
               />
 
               <button
                 type="submit"
                 className="
-            w-full sm:w-auto
-            px-6 py-4 
-            rounded-xl
-            sm:rounded-r-xl sm:rounded-l-none
-            font-bold 
-            bg-brand-gold 
-            text-white 
-            whitespace-nowrap
-          "
+    w-full sm:w-auto
+    px-6 py-4
+    rounded-xl
+    sm:ltr:rounded-r-xl sm:ltr:rounded-l-none
+    sm:rtl:rounded-l-xl sm:rtl:rounded-r-none
+    font-bold 
+    bg-brand-gold 
+    text-white 
+    whitespace-nowrap
+  "
               >
-                Subscribe
+                {dict.community.subscribe}
               </button>
+
+
             </form>
+
           </div>
         </Container>
       </section>
 
-      <FaqSection />
+      <FaqSection dict={dict} />
 
     </div>
   )

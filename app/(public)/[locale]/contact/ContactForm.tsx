@@ -15,11 +15,9 @@ function SubmitButton() {
     return <Button type="submit" disabled={pending}>{pending ? 'Sending...' : 'Send Message'}</Button>;
 }
 
-
-export default function ContactForm() {
+export default function ContactForm({ dict }: { dict: any }) {
     const [state, formAction] = useActionState(submitContactForm, undefined);
     const formRef = useRef<HTMLFormElement>(null);
-
 
     useEffect(() => {
         if (state?.message) {
@@ -28,40 +26,58 @@ export default function ContactForm() {
         }
     }, [state]);
 
-
     return (
         <Card className="p-8 space-y-6" as="form" ref={formRef} action={formAction}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <label className="block text-sm font-semibold mb-1">Full Name</label>
-                    <Input name="fullname" required placeholder="Your Name" />
+                    <label className="block text-sm font-semibold mb-1">
+                        {dict.fullName}
+                    </label>
+                    <Input
+                        name="fullname"
+                        required
+                        placeholder={dict.placeholders.name}
+                    />
                 </div>
+
                 <div>
-                    <label className="block text-sm font-semibold mb-1">Email</label>
-                    <Input name="email" type="email" required placeholder="you@example.com" />
+                    <label className="block text-sm font-semibold mb-1">
+                        {dict.email}
+                    </label>
+                    <Input
+                        name="email"
+                        type="email"
+                        required
+                        placeholder={dict.placeholders.email}
+                    />
                 </div>
             </div>
 
-
             <div>
-                <label className="block text-sm font-semibold mb-1">Subject</label>
-                <Input name="subject" required placeholder="Sponsorship Inquiry" />
+                <label className="block text-sm font-semibold mb-1">
+                    {dict.subject}
+                </label>
+                <Input
+                    name="subject"
+                    required
+                    placeholder={dict.placeholders.subject}
+                />
             </div>
 
-
             <div>
-                <label className="block text-sm font-semibold mb-1">Message</label>
+                <label className="block text-sm font-semibold mb-1">
+                    {dict.message}
+                </label>
                 <textarea
                     name="message"
                     rows={5}
                     required
-                    placeholder="Your message..."
+                    placeholder={dict.placeholders.message}
                     className="w-full rounded-xl bg-background border border-transparent focus:border-brand-green px-4 py-3 outline-none"
                 />
             </div>
 
-
-            <SubmitButton />
+            <SubmitButton/>
         </Card>
     );
 }

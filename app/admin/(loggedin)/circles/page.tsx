@@ -32,7 +32,7 @@ export default async function QuranCircleListPage() {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold text-brand-green dark:text-white">Quran Circle Management</h1>
+        <h1 className="text-3xl font-bold text-brand-gold dark:text-white">Quran Circle Management</h1>
         <Link
           href="/admin/circles/create"
           className="bg-brand-gold text-white px-4 py-2 rounded-xl hover:bg-[#c9952f] transition-colors font-bold"
@@ -62,7 +62,7 @@ export default async function QuranCircleListPage() {
               return (
                 <tr key={circle.id} className="hover:bg-gray-50 dark:hover:bg-gray-700/30">
                   <td className="p-4 font-bold text-gray-700 dark:text-gray-200 flex items-center">
-                    <BookOpen size={18} className="mr-2 text-brand-green" />
+                    <BookOpen size={18} className="mr-2 text-brand-gold" />
                     {circle.name}
                   </td>
                   <td className="p-4 text-gray-600 dark:text-gray-400">
@@ -84,12 +84,12 @@ export default async function QuranCircleListPage() {
                     </span>
                   </td>
                   <td className="p-4 text-gray-600 dark:text-gray-400">
-                    <span className="text-xs font-semibold text-brand-green block">
+                    <span className="text-xs font-semibold text-brand-gold block">
                       Teacher: {circle.assignedTeacher?.fullname || 'Unassigned'}
                     </span>
                   </td>
                   <td className="p-4 flex justify-end gap-2">
-                    <Link href={`/admin/circles/${circle.id}`} className="p-2 text-gray-400 hover:text-brand-green">
+                    <Link href={`/admin/circles/${circle.id}`} className="p-2 text-gray-400 hover:text-brand-gold">
                       Edit
                     </Link>
                     <DeleteButton action={deleteQuranCircleAction} itemId={circle.id} />

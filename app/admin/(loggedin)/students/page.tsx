@@ -2,7 +2,6 @@ import { prisma } from '@/lib/db';
 import Link from 'next/link';
 import { DeleteButton } from '@/components/admin/DeleteButton';
 import { deleteStudentAction } from '@/app/actions/student';
-import { User } from 'lucide-react';
 
 export default async function StudentListPage() {
   const students = await prisma.student.findMany({
@@ -12,7 +11,7 @@ export default async function StudentListPage() {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold text-brand-green dark:text-white">Students</h1>
+        <h1 className="text-3xl font-bold text-brand-gold dark:text-white">Students</h1>
 
         <Link 
           href="/admin/students/create" 
@@ -39,9 +38,9 @@ export default async function StudentListPage() {
                 <td className="p-4 text-gray-600 dark:text-gray-400">
                   {student.age} yrs <span className="text-xs opacity-50">({student.sex})</span>
                 </td>
-                <td className="p-4 text-brand-green dark:text-brand-gold">{student.quranCircle.name}</td>
+                <td className="p-4 text-brand-gold dark:text-brand-gold">{student.quranCircle.name}</td>
                 <td className="p-4 flex justify-end gap-2">
-                  <Link href={`/admin/students/${student.id}`} className="p-2 text-gray-400 hover:text-brand-green">
+                  <Link href={`/admin/students/${student.id}`} className="p-2 text-gray-400 hover:text-brand-gold">
                     Edit
                   </Link>
                   <DeleteButton action={deleteStudentAction} itemId={student.id} />

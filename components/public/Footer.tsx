@@ -1,8 +1,21 @@
-import Link from 'next/link'
-import React from 'react'
-import { Zap } from 'lucide-react'
+import Link from 'next/link';
+import { Zap } from 'lucide-react';
+import { getLocale } from '@/lib/locales';
+import Logo from './Logo';
 
-export function Footer() {
+export async function Footer({
+  locale,
+}: {
+  locale: 'en' | 'so' | 'ar';
+}) {
+  const dict = await getLocale(locale);
+  const navItems = [
+    { name: dict.nav.home, href: `/${locale}` },
+    { name: dict.nav.donations, href: `/${locale}/donations` },
+    { name: dict.nav.about, href: `/${locale}/about` },
+    { name: dict.nav.contact, href: `/${locale}/contact` }
+  ];
+
   return (
     <footer
       className="mt-16 pt-12 pb-8"
@@ -14,79 +27,95 @@ export function Footer() {
           {/* Brand */}
           <div>
             <Link
-              href="/"
+              href={`/${locale}`}
               className="flex items-center text-2xl font-extrabold mb-3 text-brand-gold no-underline"
             >
-              <Zap className="mr-2" /> IlmoQuranbar
+              <Logo isFooter={true} />
             </Link>
             <p className="text-sm text-white/90">
-              Teaching the Quran free of charge to more than 10,000 children.
+              {dict.footer.tagline}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h5 className="font-bold text-lg mb-3 text-brand-gold">Quick Links</h5>
+            <h5 className="font-bold text-lg mb-3 text-brand-gold">
+              {dict.footer.quickLinks}
+            </h5>
+
             <ul className="space-y-2 text-white/90">
-              <li><Link href="/about">About Us</Link></li>
-              <li><Link href="/donations">Campaigns</Link></li>
-              <li><Link href="/contact">Contact</Link></li>
-              <li><Link href="/faq">FAQ</Link></li>
+              <li><Link href={`/${locale}/about`}>{dict.nav.about}</Link></li>
+              <li><Link href={`/${locale}/donations`}>{dict.footer.campaigns}</Link></li>
+              <li><Link href={`/${locale}/contact`}>{dict.nav.contact}</Link></li>
+              <li><Link href={`/${locale}/faq`}>{dict.footer.faq}</Link></li>
             </ul>
           </div>
 
-          {/* Support */}
+          {/* Support / Navigation */}
           <div>
-            <h5 className="font-bold text-lg mb-3 text-brand-gold">Support</h5>
+            <h5 className="font-bold text-lg mb-3 text-brand-gold">
+              {dict.footer.moreLinks}
+            </h5>
+
             <ul className="space-y-2 text-white/90">
-              <li><Link href="#">Privacy Policy</Link></li>
-              <li><Link href="#">Terms of Service</Link></li>
-              <li><Link href="/admin/login">Admin Login</Link></li>
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href}>{item.name}</Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Newsletter */}
           <div>
-            <h5 className="font-bold text-lg mb-3 text-brand-gold">Newsletter</h5>
+            <h5 className="font-bold text-lg mb-3 text-brand-gold">
+              {dict.footer.newsletterTitle}
+            </h5>
             <p className="text-sm text-white/90 mb-3">
-              Stay updated with our progress.
+              {dict.footer.newsletterDesc}
             </p>
 
-            {/* FIXED: mobile-safe responsive form */}
-            <form className="w-full space-y-3 md:space-y-0 md:flex">
+            <form className="flex flex-col sm:flex-row items-center w-full space-y-3 sm:space-y-0">
               <input
                 type="email"
-                placeholder="Your email"
+                placeholder={dict.community.emailPlaceholder}
                 className="
-                  w-full
-                  p-3
-                  rounded-xl
-                  md:rounded-l-xl md:rounded-r-none
-                  bg-white/10 text-white placeholder-white/60
-                  border-none
-                "
+      w-full 
+      p-4 
+      rounded-xl
+      sm:ltr:rounded-l-xl sm:ltr:rounded-r-none
+      sm:rtl:rounded-r-xl sm:rtl:rounded-l-none
+      bg-white/90 text-black 
+      placeholder-black/50
+      outline-none border-none
+    "
               />
+
               <button
                 type="submit"
                 className="
-                  w-full md:w-auto
-                  mt-2 md:mt-0
-                  bg-brand-gold px-4 py-3
-                  rounded-xl
-                  md:rounded-r-xl md:rounded-l-none
-                  font-bold
-                "
+      w-full sm:w-auto
+      px-6 py-4 
+      rounded-xl
+      sm:ltr:rounded-r-xl sm:ltr:rounded-l-none
+      sm:rtl:rounded-l-xl sm:rtl:rounded-r-none
+      font-bold 
+      bg-brand-gold 
+      text-white 
+      whitespace-nowrap
+    "
               >
-                Subscribe
+                {dict.community.subscribe}
               </button>
             </form>
+
           </div>
         </div>
 
         <div className="mt-8 text-center text-sm text-white/60">
-          &copy; {new Date().getFullYear()} IlmoQuranbar. All rights reserved.
+          © {new Date().getFullYear()} IlmoQuranbar. {dict.footer.rights}
         </div>
       </div>
     </footer>
-  )
+  );
 }

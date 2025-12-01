@@ -6,16 +6,6 @@ import { revalidatePath } from 'next/cache';
 
 // --- SCHEMAS ---
 
-// Student Schema (Retained)
-const StudentSchema = z.object({
-    id: z.coerce.number().optional(),
-    fullname: z.string().min(3),
-    age: z.coerce.number().min(4).max(20),
-    sex: z.enum(['Male', 'Female']),
-    quranCircleId: z.coerce.number(),
-    parentId: z.coerce.number().optional(),
-});
-
 // Teacher Schema (NEW)
 const TeacherSchema = z.object({
     id: z.coerce.number().optional(),

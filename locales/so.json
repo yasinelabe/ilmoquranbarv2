@@ -1,0 +1,148 @@
+{
+    "nav": {
+        "home": "Bogga Hore",
+        "donations": "Deeqaha",
+        "about": "Nagu Saabsan",
+        "contact": "Nala Soo Xidhiidh",
+        "donate": "Ku Deeq"
+    },
+    "hero": {
+        "badge": "Ka caawi ilmo inuu barto Qur’aanka",
+        "title": "Ugu Deeq Barashada Qur’aanka, Ardayda Aan awoodin",
+        "subtitle": "Ka qayb qaado baridda Qur’aanka oo iftiimi Mustaqbalka Ubadka.",
+        "cta": "Deeq Bixi",
+        "more": "Wax Badan Ka Ogow"
+    },
+    "campaigns": {
+        "sectionTitle": "Ololaha Hadda Socda",
+        "sectionDescription": "Dooro Xalqad ama arday oo kafaala qaad, Ka mid noqo kuwa ugu khayrka badan.",
+        "showAll": "iTus Dhammaan",
+        "showLess": "Laab",
+        "none": "Ma jiro Olole Hadda Socdaa."
+    },
+    "community": {
+        "title": "Kusoo Biir Bahdeena",
+        "description": "Ka hel qormooyin ku saabsan marxaladaha ubadka aad kafaalo qaaday, iyo fursadaha kafaala-qaadka.",
+        "emailPlaceholder": "Geli iimaylkaaga",
+        "subscribe": "Is Diiwaangeli"
+    },
+    "faq": {
+        "supportLabel": "Xog warran",
+        "title": "Su'aalaha Badanaa La Isweydiiyo",
+        "subtitle": "Su'aalaha laga yaabo inaad is waydiiso, halkan ka fiiri.",
+        "categories": [
+            {
+                "key": "about",
+                "title": "Ku Saabsan IlmoQuraanBar",
+                "items": [
+                    {
+                        "q": "Waa maxay IlmoQuraanBar?",
+                        "a": "IlmoQuraanBar waa madal u go'an fududeynta waxbarashada Qur'aanka iyada oo loo marayo goobo waxbarasho oo habaysan (halqo). Waxaan isku xirnaa ardayda iyo macallimiinta shahaadaysan, waxaana bixinaa agab lagu kormeero horumarka iyo isdhexgalka bulshada."
+                    },
+                    {
+                        "q": "Yaa yihiin macallimiinta madaladiina?",
+                        "a": "Macallimiinteenu waa culimo si adag loo hubiyey iyo Hafiz (kuwa xifdiyey Qur'aanka oo dhan) oo khibrad u leh barida akhriska (Tajweed) iyo xifdinta (Hifz) iyadoo loo eegayo heerarka Islaamiga ah ee la aqoonsan yahay."
+                    },
+                    {
+                        "q": "Waa maxay Halqa (Quran Circle)?",
+                        "a": "Halqa waa jawi waxbarasho oo kooxeed oo ardaydu ku kulmaan si ay Qur'aanka isaga baran ama u akhriyaan iyagoo hoos yimaada kormeerka macallinka. Madalkeenu waxay abaabushaa halqooyinkan iyadoo lagu saleynayo heerka ardayga, helitaanka, iyo yoolalka barashada."
+                    }
+                ]
+            },
+            {
+                "key": "payments",
+                "title": "Lacag-bixin iyo Waafipay",
+                "items": [
+                    {
+                        "q": "Waa maxay hababka lacag-bixinta ee aad aqbashaan?",
+                        "a": "Waxaan si weyn u aqbalnaa lacag-bixinta iyada oo la adeegsanayo Waafipay, oo ah xalka lacag-bixinta ee isku dhafan, kaas oo taageera kanaalo lacag-bixin gudaha iyo caalami ah."
+                    },
+                    {
+                        "q": "Waxaan bixiyey lacag laakiin xaalada looma cusbooneysiin. Maxaan sameeyaa?",
+                        "a": "Lacag-bixinnada Waafipay mararka qaar waxay qaadan karaan dhowr daqiiqo inay xaqiijiyaan. Haddii xaalada lacag-bixinta aysan cusbooneysiin kadib hal saac: 1) Hubi xaaladda macaamilka ee bixiyahaaga. 2) La xiriir kooxda taageerada adiga oo wata Transaction Reference ID iyo qadarka la bixiyey."
+                    },
+                    {
+                        "q": "Ma amaan baa macluumaadka dhaqaalaha?",
+                        "a": "Haa. Dhammaan lacag-bixinnada waxaa maareeya albaabka amniga ee Waafipay. Ma kaydinno faahfaahinta xasaasiga ah ee dhaqaale (sida lambarada kaararka) si toos ah ee server-radeena. Waxaan kaliya kaydinaa tixraacyada macaamilka iyo xaaladaha la siiyaa by partner-ka lacag-bixinta."
+                    }
+                ]
+            }
+        ]
+    },
+    "footer": {
+        "tagline": "Baridda Qur’aanka bilaash ah in ka badan 10,000 carruur ah.",
+        "quickLinks": "Xiriirada Degdegga ah",
+        "moreLinks": "Xiriirro Kale",
+        "campaigns": "Ololayaasha",
+        "faq": "Su’aalaha Badan La Is Weydiiyo",
+        "newsletterTitle": "War-geeye",
+        "newsletterDesc": "Ku sii socda wararkayaga iyo horumarka.",
+        "emailPlaceholder": "E-mailkaaga",
+        "subscribe": "Is-diiwaangeli",
+        "rights": "Dhammaan xuquuqdu way dhawrsan tahay."
+    },
+    "contact": {
+        "title": "Nala Soo Xiriir",
+        "subtitle": "Waxaan diyaar u nahay inaan ka jawaabno su'aalahaaga ama ka wada hadalno iskaashi.",
+        "directInfo": "Macluumaad Toos Ah",
+        "sendMessage": "Soo Dir Farriin",
+        "form": {
+            "fullName": "Magaca Buuxa",
+            "email": "Email",
+            "subject": "Cinwaanka",
+            "message": "Farriinta",
+            "placeholders": {
+                "name": "Magacaaga",
+                "email": "adiga@example.com",
+                "subject": "Weydii Ku Saabsan Dhiirigelinta",
+                "message": "Farriintaada..."
+            },
+            "send": "Dir Farriinta",
+            "sending": "Dirayaa..."
+        },
+        "info": {
+            "phone": "Telefoon",
+            "email": "Email",
+            "location": "Goobta"
+        }
+    },
+    "about": {
+        "missionIconAlt": "Astaanta Ujeedada",
+        "title": "Himilo: Qur'aanka in la baro Ilmo Kasta",
+        "subtitle": "IlmoQuranbar waa mashruuc tabaruc ku dhisan oo ujeedkiisu yahay in carruurta si lacag la’aan ah loogu helo barashada Qur’aanka.",
+        "commitmentTitle": "Aragtidayada Ku Salaysan Waxbarashada Bilaashka ah",
+        "commitmentDesc1": "Waxaanu yaraynaynaa caqabadaha dhaqaale ee ka hor istaaga carruurta in ay helaan waxbarashada Qur’aanka iyada oo loo marayo abuurista Xalqadaha Masaajidda ee bilaashka ah.",
+        "commitmentDesc2": "Mashruucani waa Sadaqo Jariya — Deeqdaada ajarkeedu wuxuu sii soconayaa waqti dheer, Insha Allah.",
+        "pillarsTitle": "Saddexda Tiir ee IlmoQuranbar",
+        "pillars": {
+            "reachTitle": "Gaadhista 10,000 Ilmood",
+            "reachDesc": "Hadafkeenu waa in waxbarashada Qur’aanka ee bilaashka ah gaadho carruur kasta oo u baahan.",
+            "mosqueTitle": "Masaajid Kasta",
+            "mosqueDesc": "Waxaan rabnaa in masaajid kasta oo ka qaybqaata laga hirgeliyo hal goob Qur’aan oo bilaash ah.",
+            "sponsorTitle": "Daryeelka Macallinka",
+            "sponsorDesc": "Lacagta sadaqadu waxay daboolaysaa mushaharka iyo qalabka macallimiinta iyo maamulka."
+        },
+        "ctaTitle": "Diyaar Ma U Tahay Inaad Ajar Shaqaysato?",
+        "ctaSubtitle": "Deeqdaadu waxay ilmaha u sahlaysaa Barashada Qur’aanka, Taas oo aad insha Allah ajar ka heli doonto xaraf kasta oo uu barto oo uu akhriyo inta uu noolyahay.",
+        "ctaButton": "Itus Tabarucaadka"
+    },
+    "donations": {
+        "title": "Kafaalo Qaado, Baddal Nolol",
+        "subtitle": "Dooro olole sadaqo jariya ah.",
+        "noCampaigns": "Wax olole ah ma jiro hadda.",
+        "goal": "La rabo",
+        "sponsorNow": "Ku Deeq",
+        "amount": "Lacagta (USD)",
+        "fullname": "Magaca oo Buuxa",
+        "phone": "Lambarka Waafi",
+        "phone_note": "Gali numberka oo aanu la socon furaha Waddanku.",
+        "paymentMethod": "Habka Bixinta",
+        "selectedMethod": "Ku bixi si ammaan ah WaafiPay",
+        "donateNow": "Bixi Deeqda",
+        "sending": "Diraya Codsiga...",
+        "campaignAbout": "Faahfaahinta Ololaha",
+        "studentProfile": "Macluumaadka Ardayga",
+        "locationDetails": "Faahfaahinta Goobta",
+        "securePayment": "Ugu Bixi Si Ammaan Ah  WaafiPay."
+    }
+}

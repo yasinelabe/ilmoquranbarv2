@@ -22,7 +22,7 @@ export default async function TeacherListPage() {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold text-brand-green dark:text-white">Teachers Management</h1>
+        <h1 className="text-3xl font-bold text-brand-gold dark:text-white">Teachers Management</h1>
         <Link 
           href="/admin/teachers/create" 
           className="bg-brand-gold text-white px-4 py-2 rounded-xl hover:bg-[#c9952f] transition-colors font-bold"
@@ -46,7 +46,7 @@ export default async function TeacherListPage() {
             {teachers.map((teacher) => (
               <tr key={teacher.id} className="hover:bg-gray-50 dark:hover:bg-gray-700/30">
                 <td className="p-4 font-bold text-gray-700 dark:text-gray-200 flex items-center">
-                    <Aperture size={18} className="mr-2 text-brand-green" />
+                    <Aperture size={18} className="mr-2 text-brand-gold" />
                     {teacher.fullname}
                 </td>
                 <td className="p-4 text-gray-600 dark:text-gray-400">
@@ -64,12 +64,12 @@ export default async function TeacherListPage() {
                         {teacher.quranCircle?.mosque.name}, {teacher.quranCircle?.mosque.district.region.name}
                     </div>
                     <div className="flex items-center mt-1 font-semibold">
-                        <Users size={14} className="mr-1.5 text-brand-green" />
+                        <Users size={14} className="mr-1.5 text-brand-gold" />
                         {teacher.quranCircle?.students.length || 0} Students
                     </div>
                 </td>
                 <td className="p-4 flex justify-end gap-2">
-                  <Link href={`/admin/teachers/${teacher.id}`} className="p-2 text-gray-400 hover:text-brand-green">
+                  <Link href={`/admin/teachers/${teacher.id}`} className="p-2 text-gray-400 hover:text-brand-gold">
                     Edit
                   </Link>
                   <DeleteButton action={deleteTeacherAction} itemId={teacher.id} />

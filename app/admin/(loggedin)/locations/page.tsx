@@ -26,7 +26,7 @@ export default async function LocationListPage() {
 
   return (
     <div className="space-y-8">
-      <h1 className="text-3xl font-bold text-brand-green dark:text-white">Location Management</h1>
+      <h1 className="text-3xl font-bold text-brand-gold dark:text-white">Location Management</h1>
       <div className="flex gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-sm">
         <Link href="/admin/locations/create/country" className="flex items-center bg-brand-green text-white px-4 py-2 rounded-xl hover:bg-brand-green/90 transition-colors">
           <Globe size={18} className="mr-2" /> Country
@@ -46,7 +46,7 @@ export default async function LocationListPage() {
             
             {/* Country Header */}
             <div className="flex justify-between items-center p-3 bg-white dark:bg-gray-800 rounded-lg shadow-md">
-              <h2 className="text-xl font-bold text-brand-green flex items-center">
+              <h2 className="text-xl font-bold text-brand-gold flex items-center">
                 <Globe size={20} className="mr-2" /> {country.name}
               </h2>
               <div className="flex gap-2">
@@ -66,7 +66,7 @@ export default async function LocationListPage() {
                       <Landmark size={18} className="mr-2" /> {region.name}
                     </h3>
                     <div className="flex gap-2">
-                      <Link href={`/admin/locations/edit/region/${region.id}`} className="p-1 text-gray-500 hover:text-brand-green">Edit</Link>
+                      <Link href={`/admin/locations/edit/region/${region.id}`} className="p-1 text-gray-500 hover:text-brand-gold">Edit</Link>
                       <DeleteButton action={deleteRegionAction} itemId={region.id} />
                     </div>
                   </div>

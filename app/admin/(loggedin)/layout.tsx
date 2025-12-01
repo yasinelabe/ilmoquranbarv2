@@ -24,15 +24,14 @@ export default function AdminLayout({
             {/* Mobile Menu Toggle & Brand */}
             <div className="flex items-center gap-4">
               <SidebarToggle />
-              <h1 className="text-xl font-semibold text-brand-green dark:text-brand-gold md:hidden">
+              <h1 className="text-xl font-semibold text-brand-gold dark:text-brand-gold md:hidden">
                 Admin Panel
               </h1>
             </div>
 
             {/* Actions (Theme Toggle, User Profile) */}
             <div className="flex items-center space-x-3">
-              <ThemeToggle />
-              <Link href="/admin/profile" className="p-2 rounded-full bg-brand-green text-white dark:bg-brand-gold dark:text-gray-900 font-bold text-sm h-8 w-8 flex items-center justify-center">
+              <Link href="/admin/settings" className="p-2 rounded-full bg-brand-green text-white dark:bg-brand-gold dark:text-gray-900 font-bold text-sm h-8 w-8 flex items-center justify-center">
                 A
               </Link>
             </div>

@@ -1,0 +1,147 @@
+{
+    "nav": {
+        "home": "Home",
+        "donations": "Donations",
+        "about": "About",
+        "contact": "Contact",
+        "donate": "Donate"
+    },
+    "hero": {
+        "badge": "Empower a Child with Qur’an",
+        "title": "Give the Gift of Qur'an and Change a Life Forever",
+        "subtitle": "Help support Quran education and transform young lives with ongoing knowledge.",
+        "cta": "Donate Now",
+        "more": "Learn More"
+    },
+    "campaigns": {
+        "sectionTitle": "Active Campaigns",
+        "sectionDescription": "Choose a circle or student to sponsor and make an immediate impact.",
+        "showAll": "Show All",
+        "none": "No active campaigns at the moment."
+    },
+    "community": {
+        "title": "Join Our Community",
+        "description": "Get updates on our progress, new Quran circles, and sponsorship opportunities.",
+        "emailPlaceholder": "Enter your email",
+        "subscribe": "Subscribe"
+    },
+    "faq": {
+        "supportLabel": "Support",
+        "title": "Frequently Asked Questions",
+        "subtitle": "Everything you need to know about our service, learning, and platform.",
+        "categories": [
+            {
+                "key": "about",
+                "title": "About Ilm Quraan Bar",
+                "items": [
+                    {
+                        "q": "What is Ilm Quraan Bar?",
+                        "a": "Ilm Quraan Bar is a platform dedicated to facilitating Quranic education through organized learning circles (halqas). We connect students with qualified teachers and provide tools for progress tracking and community interaction."
+                    },
+                    {
+                        "q": "Who are the teachers on your platform?",
+                        "a": "Our teachers are rigorously vetted scholars and Hafiz (those who have memorized the entire Quran) with experience in teaching recitation (Tajweed) and memorization (Hifz) according to recognized Islamic standards."
+                    },
+                    {
+                        "q": "What is a Quran Circle (Halqa)?",
+                        "a": "A Quran Circle is a group learning environment where students gather virtually or physically to recite the Quran under the supervision of a teacher. Our platform organizes these circles based on student level, availability, and learning goals."
+                    }
+                ]
+            },
+            {
+                "key": "payments",
+                "title": "Payments and Waafipay",
+                "items": [
+                    {
+                        "q": "What payment methods do you accept?",
+                        "a": "We accept payments primarily through Waafipay, our integrated payment solution, which supports various local and international payment channels."
+                    },
+                    {
+                        "q": "I made a payment, but my status hasn't updated. What should I do?",
+                        "a": "Payments processed via Waafipay can sometimes take a few minutes to confirm. If your payment status has not updated after one hour: 1) Verify the transaction status with your payment provider. 2) Contact our support team immediately with your Transaction Reference ID and the amount paid."
+                    },
+                    {
+                        "q": "Is my financial information secure?",
+                        "a": "Yes. All payments are handled by Waafipay's secure gateway. We do not store sensitive financial details (like credit card numbers) directly on our servers. We only store transaction references and status updates provided by the payment partner."
+                    }
+                ]
+            }
+        ]
+    },
+    "footer": {
+        "tagline": "Teaching the Quran free of charge to more than 10,000 children.",
+        "quickLinks": "Quick Links",
+        "moreLinks": "More Links",
+        "campaigns": "Campaigns",
+        "faq": "FAQ",
+        "newsletterTitle": "Newsletter",
+        "newsletterDesc": "Stay updated with our progress.",
+        "emailPlaceholder": "Your email",
+        "subscribe": "Subscribe",
+        "rights": "All rights reserved."
+    },
+    "contact": {
+        "title": "Get in Touch",
+        "subtitle": "We’re here to answer questions or discuss partnerships.",
+        "directInfo": "Direct Information",
+        "sendMessage": "Send Us a Message",
+        "form": {
+            "fullName": "Full Name",
+            "email": "Email",
+            "subject": "Subject",
+            "message": "Message",
+            "placeholders": {
+                "name": "Your Name",
+                "email": "you@example.com",
+                "subject": "Sponsorship Inquiry",
+                "message": "Your message..."
+            },
+            "send": "Send Message",
+            "sending": "Sending..."
+        },
+        "info": {
+            "phone": "Phone",
+            "email": "Email",
+            "location": "Location"
+        }
+    },
+    "about": {
+        "missionIconAlt": "Mission Icon",
+        "title": "Our Mission: Quran for Every Child",
+        "subtitle": "IlmoQuranbar is a sponsorship-driven educational project dedicated to making Quranic knowledge accessible and free.",
+        "commitmentTitle": "Our Commitment to Free Education",
+        "commitmentDesc1": "We remove the financial barriers that prevent children from accessing Quranic education by establishing free Quran circles in mosques.",
+        "commitmentDesc2": "This initiative is a Sadqa Jariya—your sponsorship continues benefitting long after it’s given.",
+        "pillarsTitle": "The Three Pillars of IlmoQuranbar",
+        "pillars": {
+            "reachTitle": "Reaching 10,000 Children",
+            "reachDesc": "Our goal is to ensure free Quranic education reaches every young learner who needs it.",
+            "mosqueTitle": "In Every Mosque",
+            "mosqueDesc": "We aim to establish one free Quran circle in every participating local mosque.",
+            "sponsorTitle": "Teacher Sponsorship",
+            "sponsorDesc": "Sponsorship covers salaries and resources for dedicated Mu’allims and administrators."
+        },
+        "ctaTitle": "Ready to Make an Impact?",
+        "ctaSubtitle": "Your sponsorship gives a child lifelong access to the Qur'an.",
+        "ctaButton": "See Active Campaigns"
+    },
+    "donations": {
+        "title": "Sponsor a Circle, Change a Life",
+        "subtitle": "Choose an active campaign to make your Sadaqa Jariya.",
+        "noCampaigns": "No active campaigns at the moment.",
+        "goal": "Goal",
+        "sponsorNow": "Sponsor Now",
+        "amount": "Amount (USD)",
+        "fullname": "Full Name",
+        "phone": "Waafi Phone Number",
+        "phone_note": "Enter only the phone number without the country code.",
+        "paymentMethod": "Payment Method",
+        "selectedMethod": "Pay securely via WaafiPay",
+        "donateNow": "Donate Now",
+        "sending": "Sending Request...",
+        "campaignAbout": "About the Campaign",
+        "studentProfile": "Student Profile",
+        "locationDetails": "Location Details",
+        "securePayment": "Secure payment via WaafiPay."
+    }
+}
