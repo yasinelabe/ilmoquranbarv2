@@ -283,6 +283,7 @@ export type CampaignWhereInput = {
   student?: Prisma.XOR<Prisma.StudentNullableScalarRelationFilter, Prisma.StudentWhereInput> | null
   quranCircle?: Prisma.XOR<Prisma.QuranCircleNullableScalarRelationFilter, Prisma.QuranCircleWhereInput> | null
   transactions?: Prisma.TransactionListRelationFilter
+  emailLogs?: Prisma.EmailLogListRelationFilter
 }
 
 export type CampaignOrderByWithRelationInput = {
@@ -300,6 +301,7 @@ export type CampaignOrderByWithRelationInput = {
   student?: Prisma.StudentOrderByWithRelationInput
   quranCircle?: Prisma.QuranCircleOrderByWithRelationInput
   transactions?: Prisma.TransactionOrderByRelationAggregateInput
+  emailLogs?: Prisma.EmailLogOrderByRelationAggregateInput
   _relevance?: Prisma.CampaignOrderByRelevanceInput
 }
 
@@ -321,6 +323,7 @@ export type CampaignWhereUniqueInput = Prisma.AtLeast<{
   student?: Prisma.XOR<Prisma.StudentNullableScalarRelationFilter, Prisma.StudentWhereInput> | null
   quranCircle?: Prisma.XOR<Prisma.QuranCircleNullableScalarRelationFilter, Prisma.QuranCircleWhereInput> | null
   transactions?: Prisma.TransactionListRelationFilter
+  emailLogs?: Prisma.EmailLogListRelationFilter
 }, "id">
 
 export type CampaignOrderByWithAggregationInput = {
@@ -371,6 +374,7 @@ export type CampaignCreateInput = {
   student?: Prisma.StudentCreateNestedOneWithoutCampaignsInput
   quranCircle?: Prisma.QuranCircleCreateNestedOneWithoutCampaignsInput
   transactions?: Prisma.TransactionCreateNestedManyWithoutCampaignInput
+  emailLogs?: Prisma.EmailLogCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignUncheckedCreateInput = {
@@ -386,6 +390,7 @@ export type CampaignUncheckedCreateInput = {
   createdAt?: Date | string
   isComplete?: boolean
   transactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutCampaignInput
+  emailLogs?: Prisma.EmailLogUncheckedCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignUpdateInput = {
@@ -400,6 +405,7 @@ export type CampaignUpdateInput = {
   student?: Prisma.StudentUpdateOneWithoutCampaignsNestedInput
   quranCircle?: Prisma.QuranCircleUpdateOneWithoutCampaignsNestedInput
   transactions?: Prisma.TransactionUpdateManyWithoutCampaignNestedInput
+  emailLogs?: Prisma.EmailLogUpdateManyWithoutCampaignNestedInput
 }
 
 export type CampaignUncheckedUpdateInput = {
@@ -415,6 +421,7 @@ export type CampaignUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isComplete?: Prisma.BoolFieldUpdateOperationsInput | boolean
   transactions?: Prisma.TransactionUncheckedUpdateManyWithoutCampaignNestedInput
+  emailLogs?: Prisma.EmailLogUncheckedUpdateManyWithoutCampaignNestedInput
 }
 
 export type CampaignCreateManyInput = {
@@ -641,6 +648,20 @@ export type CampaignUpdateOneRequiredWithoutTransactionsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.CampaignUpdateToOneWithWhereWithoutTransactionsInput, Prisma.CampaignUpdateWithoutTransactionsInput>, Prisma.CampaignUncheckedUpdateWithoutTransactionsInput>
 }
 
+export type CampaignCreateNestedOneWithoutEmailLogsInput = {
+  create?: Prisma.XOR<Prisma.CampaignCreateWithoutEmailLogsInput, Prisma.CampaignUncheckedCreateWithoutEmailLogsInput>
+  connectOrCreate?: Prisma.CampaignCreateOrConnectWithoutEmailLogsInput
+  connect?: Prisma.CampaignWhereUniqueInput
+}
+
+export type CampaignUpdateOneRequiredWithoutEmailLogsNestedInput = {
+  create?: Prisma.XOR<Prisma.CampaignCreateWithoutEmailLogsInput, Prisma.CampaignUncheckedCreateWithoutEmailLogsInput>
+  connectOrCreate?: Prisma.CampaignCreateOrConnectWithoutEmailLogsInput
+  upsert?: Prisma.CampaignUpsertWithoutEmailLogsInput
+  connect?: Prisma.CampaignWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CampaignUpdateToOneWithWhereWithoutEmailLogsInput, Prisma.CampaignUpdateWithoutEmailLogsInput>, Prisma.CampaignUncheckedUpdateWithoutEmailLogsInput>
+}
+
 export type CampaignCreateWithoutQuranCircleInput = {
   name: string
   type: string
@@ -652,6 +673,7 @@ export type CampaignCreateWithoutQuranCircleInput = {
   isComplete?: boolean
   student?: Prisma.StudentCreateNestedOneWithoutCampaignsInput
   transactions?: Prisma.TransactionCreateNestedManyWithoutCampaignInput
+  emailLogs?: Prisma.EmailLogCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignUncheckedCreateWithoutQuranCircleInput = {
@@ -666,6 +688,7 @@ export type CampaignUncheckedCreateWithoutQuranCircleInput = {
   createdAt?: Date | string
   isComplete?: boolean
   transactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutCampaignInput
+  emailLogs?: Prisma.EmailLogUncheckedCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignCreateOrConnectWithoutQuranCircleInput = {
@@ -722,6 +745,7 @@ export type CampaignCreateWithoutStudentInput = {
   isComplete?: boolean
   quranCircle?: Prisma.QuranCircleCreateNestedOneWithoutCampaignsInput
   transactions?: Prisma.TransactionCreateNestedManyWithoutCampaignInput
+  emailLogs?: Prisma.EmailLogCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignUncheckedCreateWithoutStudentInput = {
@@ -736,6 +760,7 @@ export type CampaignUncheckedCreateWithoutStudentInput = {
   createdAt?: Date | string
   isComplete?: boolean
   transactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutCampaignInput
+  emailLogs?: Prisma.EmailLogUncheckedCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignCreateOrConnectWithoutStudentInput = {
@@ -775,6 +800,7 @@ export type CampaignCreateWithoutTransactionsInput = {
   isComplete?: boolean
   student?: Prisma.StudentCreateNestedOneWithoutCampaignsInput
   quranCircle?: Prisma.QuranCircleCreateNestedOneWithoutCampaignsInput
+  emailLogs?: Prisma.EmailLogCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignUncheckedCreateWithoutTransactionsInput = {
@@ -789,6 +815,7 @@ export type CampaignUncheckedCreateWithoutTransactionsInput = {
   description: string
   createdAt?: Date | string
   isComplete?: boolean
+  emailLogs?: Prisma.EmailLogUncheckedCreateNestedManyWithoutCampaignInput
 }
 
 export type CampaignCreateOrConnectWithoutTransactionsInput = {
@@ -818,6 +845,7 @@ export type CampaignUpdateWithoutTransactionsInput = {
   isComplete?: Prisma.BoolFieldUpdateOperationsInput | boolean
   student?: Prisma.StudentUpdateOneWithoutCampaignsNestedInput
   quranCircle?: Prisma.QuranCircleUpdateOneWithoutCampaignsNestedInput
+  emailLogs?: Prisma.EmailLogUpdateManyWithoutCampaignNestedInput
 }
 
 export type CampaignUncheckedUpdateWithoutTransactionsInput = {
@@ -832,6 +860,81 @@ export type CampaignUncheckedUpdateWithoutTransactionsInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isComplete?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailLogs?: Prisma.EmailLogUncheckedUpdateManyWithoutCampaignNestedInput
+}
+
+export type CampaignCreateWithoutEmailLogsInput = {
+  name: string
+  type: string
+  targetAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  collectedAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  image?: string | null
+  description: string
+  createdAt?: Date | string
+  isComplete?: boolean
+  student?: Prisma.StudentCreateNestedOneWithoutCampaignsInput
+  quranCircle?: Prisma.QuranCircleCreateNestedOneWithoutCampaignsInput
+  transactions?: Prisma.TransactionCreateNestedManyWithoutCampaignInput
+}
+
+export type CampaignUncheckedCreateWithoutEmailLogsInput = {
+  id?: number
+  name: string
+  type: string
+  studentId?: number | null
+  quranCircleId?: number | null
+  targetAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
+  collectedAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  image?: string | null
+  description: string
+  createdAt?: Date | string
+  isComplete?: boolean
+  transactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutCampaignInput
+}
+
+export type CampaignCreateOrConnectWithoutEmailLogsInput = {
+  where: Prisma.CampaignWhereUniqueInput
+  create: Prisma.XOR<Prisma.CampaignCreateWithoutEmailLogsInput, Prisma.CampaignUncheckedCreateWithoutEmailLogsInput>
+}
+
+export type CampaignUpsertWithoutEmailLogsInput = {
+  update: Prisma.XOR<Prisma.CampaignUpdateWithoutEmailLogsInput, Prisma.CampaignUncheckedUpdateWithoutEmailLogsInput>
+  create: Prisma.XOR<Prisma.CampaignCreateWithoutEmailLogsInput, Prisma.CampaignUncheckedCreateWithoutEmailLogsInput>
+  where?: Prisma.CampaignWhereInput
+}
+
+export type CampaignUpdateToOneWithWhereWithoutEmailLogsInput = {
+  where?: Prisma.CampaignWhereInput
+  data: Prisma.XOR<Prisma.CampaignUpdateWithoutEmailLogsInput, Prisma.CampaignUncheckedUpdateWithoutEmailLogsInput>
+}
+
+export type CampaignUpdateWithoutEmailLogsInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  targetAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  collectedAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isComplete?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  student?: Prisma.StudentUpdateOneWithoutCampaignsNestedInput
+  quranCircle?: Prisma.QuranCircleUpdateOneWithoutCampaignsNestedInput
+  transactions?: Prisma.TransactionUpdateManyWithoutCampaignNestedInput
+}
+
+export type CampaignUncheckedUpdateWithoutEmailLogsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  studentId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  quranCircleId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  targetAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  collectedAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isComplete?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  transactions?: Prisma.TransactionUncheckedUpdateManyWithoutCampaignNestedInput
 }
 
 export type CampaignCreateManyQuranCircleInput = {
@@ -858,6 +961,7 @@ export type CampaignUpdateWithoutQuranCircleInput = {
   isComplete?: Prisma.BoolFieldUpdateOperationsInput | boolean
   student?: Prisma.StudentUpdateOneWithoutCampaignsNestedInput
   transactions?: Prisma.TransactionUpdateManyWithoutCampaignNestedInput
+  emailLogs?: Prisma.EmailLogUpdateManyWithoutCampaignNestedInput
 }
 
 export type CampaignUncheckedUpdateWithoutQuranCircleInput = {
@@ -872,6 +976,7 @@ export type CampaignUncheckedUpdateWithoutQuranCircleInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isComplete?: Prisma.BoolFieldUpdateOperationsInput | boolean
   transactions?: Prisma.TransactionUncheckedUpdateManyWithoutCampaignNestedInput
+  emailLogs?: Prisma.EmailLogUncheckedUpdateManyWithoutCampaignNestedInput
 }
 
 export type CampaignUncheckedUpdateManyWithoutQuranCircleInput = {
@@ -911,6 +1016,7 @@ export type CampaignUpdateWithoutStudentInput = {
   isComplete?: Prisma.BoolFieldUpdateOperationsInput | boolean
   quranCircle?: Prisma.QuranCircleUpdateOneWithoutCampaignsNestedInput
   transactions?: Prisma.TransactionUpdateManyWithoutCampaignNestedInput
+  emailLogs?: Prisma.EmailLogUpdateManyWithoutCampaignNestedInput
 }
 
 export type CampaignUncheckedUpdateWithoutStudentInput = {
@@ -925,6 +1031,7 @@ export type CampaignUncheckedUpdateWithoutStudentInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isComplete?: Prisma.BoolFieldUpdateOperationsInput | boolean
   transactions?: Prisma.TransactionUncheckedUpdateManyWithoutCampaignNestedInput
+  emailLogs?: Prisma.EmailLogUncheckedUpdateManyWithoutCampaignNestedInput
 }
 
 export type CampaignUncheckedUpdateManyWithoutStudentInput = {
@@ -947,10 +1054,12 @@ export type CampaignUncheckedUpdateManyWithoutStudentInput = {
 
 export type CampaignCountOutputType = {
   transactions: number
+  emailLogs: number
 }
 
 export type CampaignCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   transactions?: boolean | CampaignCountOutputTypeCountTransactionsArgs
+  emailLogs?: boolean | CampaignCountOutputTypeCountEmailLogsArgs
 }
 
 /**
@@ -970,6 +1079,13 @@ export type CampaignCountOutputTypeCountTransactionsArgs<ExtArgs extends runtime
   where?: Prisma.TransactionWhereInput
 }
 
+/**
+ * CampaignCountOutputType without action
+ */
+export type CampaignCountOutputTypeCountEmailLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.EmailLogWhereInput
+}
+
 
 export type CampaignSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -986,6 +1102,7 @@ export type CampaignSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   student?: boolean | Prisma.Campaign$studentArgs<ExtArgs>
   quranCircle?: boolean | Prisma.Campaign$quranCircleArgs<ExtArgs>
   transactions?: boolean | Prisma.Campaign$transactionsArgs<ExtArgs>
+  emailLogs?: boolean | Prisma.Campaign$emailLogsArgs<ExtArgs>
   _count?: boolean | Prisma.CampaignCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["campaign"]>
 
@@ -1010,6 +1127,7 @@ export type CampaignInclude<ExtArgs extends runtime.Types.Extensions.InternalArg
   student?: boolean | Prisma.Campaign$studentArgs<ExtArgs>
   quranCircle?: boolean | Prisma.Campaign$quranCircleArgs<ExtArgs>
   transactions?: boolean | Prisma.Campaign$transactionsArgs<ExtArgs>
+  emailLogs?: boolean | Prisma.Campaign$emailLogsArgs<ExtArgs>
   _count?: boolean | Prisma.CampaignCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -1019,6 +1137,7 @@ export type $CampaignPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     student: Prisma.$StudentPayload<ExtArgs> | null
     quranCircle: Prisma.$QuranCirclePayload<ExtArgs> | null
     transactions: Prisma.$TransactionPayload<ExtArgs>[]
+    emailLogs: Prisma.$EmailLogPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1375,6 +1494,7 @@ export interface Prisma__CampaignClient<T, Null = never, ExtArgs extends runtime
   student<T extends Prisma.Campaign$studentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Campaign$studentArgs<ExtArgs>>): Prisma.Prisma__StudentClient<runtime.Types.Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   quranCircle<T extends Prisma.Campaign$quranCircleArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Campaign$quranCircleArgs<ExtArgs>>): Prisma.Prisma__QuranCircleClient<runtime.Types.Result.GetResult<Prisma.$QuranCirclePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   transactions<T extends Prisma.Campaign$transactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Campaign$transactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  emailLogs<T extends Prisma.Campaign$emailLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Campaign$emailLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EmailLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1817,6 +1937,30 @@ export type Campaign$transactionsArgs<ExtArgs extends runtime.Types.Extensions.I
   take?: number
   skip?: number
   distinct?: Prisma.TransactionScalarFieldEnum | Prisma.TransactionScalarFieldEnum[]
+}
+
+/**
+ * Campaign.emailLogs
+ */
+export type Campaign$emailLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the EmailLog
+   */
+  select?: Prisma.EmailLogSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the EmailLog
+   */
+  omit?: Prisma.EmailLogOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EmailLogInclude<ExtArgs> | null
+  where?: Prisma.EmailLogWhereInput
+  orderBy?: Prisma.EmailLogOrderByWithRelationInput | Prisma.EmailLogOrderByWithRelationInput[]
+  cursor?: Prisma.EmailLogWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.EmailLogScalarFieldEnum | Prisma.EmailLogScalarFieldEnum[]
 }
 
 /**

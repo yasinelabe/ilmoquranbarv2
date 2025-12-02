@@ -209,6 +209,7 @@ export type SponsorWhereInput = {
   phone?: Prisma.StringFilter<"Sponsor"> | string
   email?: Prisma.StringNullableFilter<"Sponsor"> | string | null
   transactions?: Prisma.TransactionListRelationFilter
+  emailLogs?: Prisma.EmailLogListRelationFilter
 }
 
 export type SponsorOrderByWithRelationInput = {
@@ -217,6 +218,7 @@ export type SponsorOrderByWithRelationInput = {
   phone?: Prisma.SortOrder
   email?: Prisma.SortOrderInput | Prisma.SortOrder
   transactions?: Prisma.TransactionOrderByRelationAggregateInput
+  emailLogs?: Prisma.EmailLogOrderByRelationAggregateInput
   _relevance?: Prisma.SponsorOrderByRelevanceInput
 }
 
@@ -229,6 +231,7 @@ export type SponsorWhereUniqueInput = Prisma.AtLeast<{
   phone?: Prisma.StringFilter<"Sponsor"> | string
   email?: Prisma.StringNullableFilter<"Sponsor"> | string | null
   transactions?: Prisma.TransactionListRelationFilter
+  emailLogs?: Prisma.EmailLogListRelationFilter
 }, "id">
 
 export type SponsorOrderByWithAggregationInput = {
@@ -258,6 +261,7 @@ export type SponsorCreateInput = {
   phone: string
   email?: string | null
   transactions?: Prisma.TransactionCreateNestedManyWithoutSponsorInput
+  emailLogs?: Prisma.EmailLogCreateNestedManyWithoutSponsorInput
 }
 
 export type SponsorUncheckedCreateInput = {
@@ -266,6 +270,7 @@ export type SponsorUncheckedCreateInput = {
   phone: string
   email?: string | null
   transactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutSponsorInput
+  emailLogs?: Prisma.EmailLogUncheckedCreateNestedManyWithoutSponsorInput
 }
 
 export type SponsorUpdateInput = {
@@ -273,6 +278,7 @@ export type SponsorUpdateInput = {
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   transactions?: Prisma.TransactionUpdateManyWithoutSponsorNestedInput
+  emailLogs?: Prisma.EmailLogUpdateManyWithoutSponsorNestedInput
 }
 
 export type SponsorUncheckedUpdateInput = {
@@ -281,6 +287,7 @@ export type SponsorUncheckedUpdateInput = {
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   transactions?: Prisma.TransactionUncheckedUpdateManyWithoutSponsorNestedInput
+  emailLogs?: Prisma.EmailLogUncheckedUpdateManyWithoutSponsorNestedInput
 }
 
 export type SponsorCreateManyInput = {
@@ -357,10 +364,25 @@ export type SponsorUpdateOneRequiredWithoutTransactionsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.SponsorUpdateToOneWithWhereWithoutTransactionsInput, Prisma.SponsorUpdateWithoutTransactionsInput>, Prisma.SponsorUncheckedUpdateWithoutTransactionsInput>
 }
 
+export type SponsorCreateNestedOneWithoutEmailLogsInput = {
+  create?: Prisma.XOR<Prisma.SponsorCreateWithoutEmailLogsInput, Prisma.SponsorUncheckedCreateWithoutEmailLogsInput>
+  connectOrCreate?: Prisma.SponsorCreateOrConnectWithoutEmailLogsInput
+  connect?: Prisma.SponsorWhereUniqueInput
+}
+
+export type SponsorUpdateOneRequiredWithoutEmailLogsNestedInput = {
+  create?: Prisma.XOR<Prisma.SponsorCreateWithoutEmailLogsInput, Prisma.SponsorUncheckedCreateWithoutEmailLogsInput>
+  connectOrCreate?: Prisma.SponsorCreateOrConnectWithoutEmailLogsInput
+  upsert?: Prisma.SponsorUpsertWithoutEmailLogsInput
+  connect?: Prisma.SponsorWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SponsorUpdateToOneWithWhereWithoutEmailLogsInput, Prisma.SponsorUpdateWithoutEmailLogsInput>, Prisma.SponsorUncheckedUpdateWithoutEmailLogsInput>
+}
+
 export type SponsorCreateWithoutTransactionsInput = {
   fullname: string
   phone: string
   email?: string | null
+  emailLogs?: Prisma.EmailLogCreateNestedManyWithoutSponsorInput
 }
 
 export type SponsorUncheckedCreateWithoutTransactionsInput = {
@@ -368,6 +390,7 @@ export type SponsorUncheckedCreateWithoutTransactionsInput = {
   fullname: string
   phone: string
   email?: string | null
+  emailLogs?: Prisma.EmailLogUncheckedCreateNestedManyWithoutSponsorInput
 }
 
 export type SponsorCreateOrConnectWithoutTransactionsInput = {
@@ -390,6 +413,7 @@ export type SponsorUpdateWithoutTransactionsInput = {
   fullname?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailLogs?: Prisma.EmailLogUpdateManyWithoutSponsorNestedInput
 }
 
 export type SponsorUncheckedUpdateWithoutTransactionsInput = {
@@ -397,6 +421,53 @@ export type SponsorUncheckedUpdateWithoutTransactionsInput = {
   fullname?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailLogs?: Prisma.EmailLogUncheckedUpdateManyWithoutSponsorNestedInput
+}
+
+export type SponsorCreateWithoutEmailLogsInput = {
+  fullname: string
+  phone: string
+  email?: string | null
+  transactions?: Prisma.TransactionCreateNestedManyWithoutSponsorInput
+}
+
+export type SponsorUncheckedCreateWithoutEmailLogsInput = {
+  id?: number
+  fullname: string
+  phone: string
+  email?: string | null
+  transactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutSponsorInput
+}
+
+export type SponsorCreateOrConnectWithoutEmailLogsInput = {
+  where: Prisma.SponsorWhereUniqueInput
+  create: Prisma.XOR<Prisma.SponsorCreateWithoutEmailLogsInput, Prisma.SponsorUncheckedCreateWithoutEmailLogsInput>
+}
+
+export type SponsorUpsertWithoutEmailLogsInput = {
+  update: Prisma.XOR<Prisma.SponsorUpdateWithoutEmailLogsInput, Prisma.SponsorUncheckedUpdateWithoutEmailLogsInput>
+  create: Prisma.XOR<Prisma.SponsorCreateWithoutEmailLogsInput, Prisma.SponsorUncheckedCreateWithoutEmailLogsInput>
+  where?: Prisma.SponsorWhereInput
+}
+
+export type SponsorUpdateToOneWithWhereWithoutEmailLogsInput = {
+  where?: Prisma.SponsorWhereInput
+  data: Prisma.XOR<Prisma.SponsorUpdateWithoutEmailLogsInput, Prisma.SponsorUncheckedUpdateWithoutEmailLogsInput>
+}
+
+export type SponsorUpdateWithoutEmailLogsInput = {
+  fullname?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactions?: Prisma.TransactionUpdateManyWithoutSponsorNestedInput
+}
+
+export type SponsorUncheckedUpdateWithoutEmailLogsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  fullname?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transactions?: Prisma.TransactionUncheckedUpdateManyWithoutSponsorNestedInput
 }
 
 
@@ -406,10 +477,12 @@ export type SponsorUncheckedUpdateWithoutTransactionsInput = {
 
 export type SponsorCountOutputType = {
   transactions: number
+  emailLogs: number
 }
 
 export type SponsorCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   transactions?: boolean | SponsorCountOutputTypeCountTransactionsArgs
+  emailLogs?: boolean | SponsorCountOutputTypeCountEmailLogsArgs
 }
 
 /**
@@ -429,6 +502,13 @@ export type SponsorCountOutputTypeCountTransactionsArgs<ExtArgs extends runtime.
   where?: Prisma.TransactionWhereInput
 }
 
+/**
+ * SponsorCountOutputType without action
+ */
+export type SponsorCountOutputTypeCountEmailLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.EmailLogWhereInput
+}
+
 
 export type SponsorSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -436,6 +516,7 @@ export type SponsorSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   phone?: boolean
   email?: boolean
   transactions?: boolean | Prisma.Sponsor$transactionsArgs<ExtArgs>
+  emailLogs?: boolean | Prisma.Sponsor$emailLogsArgs<ExtArgs>
   _count?: boolean | Prisma.SponsorCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["sponsor"]>
 
@@ -451,6 +532,7 @@ export type SponsorSelectScalar = {
 export type SponsorOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "fullname" | "phone" | "email", ExtArgs["result"]["sponsor"]>
 export type SponsorInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   transactions?: boolean | Prisma.Sponsor$transactionsArgs<ExtArgs>
+  emailLogs?: boolean | Prisma.Sponsor$emailLogsArgs<ExtArgs>
   _count?: boolean | Prisma.SponsorCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -458,6 +540,7 @@ export type $SponsorPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   name: "Sponsor"
   objects: {
     transactions: Prisma.$TransactionPayload<ExtArgs>[]
+    emailLogs: Prisma.$EmailLogPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -805,6 +888,7 @@ readonly fields: SponsorFieldRefs;
 export interface Prisma__SponsorClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   transactions<T extends Prisma.Sponsor$transactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Sponsor$transactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  emailLogs<T extends Prisma.Sponsor$emailLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Sponsor$emailLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EmailLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1202,6 +1286,30 @@ export type Sponsor$transactionsArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   distinct?: Prisma.TransactionScalarFieldEnum | Prisma.TransactionScalarFieldEnum[]
+}
+
+/**
+ * Sponsor.emailLogs
+ */
+export type Sponsor$emailLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the EmailLog
+   */
+  select?: Prisma.EmailLogSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the EmailLog
+   */
+  omit?: Prisma.EmailLogOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EmailLogInclude<ExtArgs> | null
+  where?: Prisma.EmailLogWhereInput
+  orderBy?: Prisma.EmailLogOrderByWithRelationInput | Prisma.EmailLogOrderByWithRelationInput[]
+  cursor?: Prisma.EmailLogWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.EmailLogScalarFieldEnum | Prisma.EmailLogScalarFieldEnum[]
 }
 
 /**

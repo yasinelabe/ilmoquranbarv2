@@ -29,7 +29,7 @@ bg-brand-gold text-white px-4 py-2 rounded-xl hover:bg-[#c9952f] transition-colo
       {/* Table */}
       <div
         className="
-          bg-white dark:bg-gray-900
+          bg-white text-gray-700 dark:bg-gray-900
           rounded-2xl 
           overflow-hidden 
           border 

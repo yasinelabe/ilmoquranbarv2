@@ -1,18 +1,9 @@
 'use server'
 
-import { z } from 'zod';
 import { prisma } from '@/lib/db';
 import { revalidatePath } from 'next/cache';
+import { MosqueSchema } from '@/schema/zodSchema';
 
-// --- SCHEMAS ---
-const MosqueSchema = z.object({
-  id: z.coerce.number().optional(),
-  name: z.string().min(3),
-  imam: z.string().optional(),
-  districtId: z.coerce.number(),
-});
-
-// --- ACTIONS ---
 
 // 1. MOSQUE ACTIONS
 export async function saveMosqueAction(prevState: any, formData: FormData) {

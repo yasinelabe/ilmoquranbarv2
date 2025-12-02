@@ -19,7 +19,7 @@ export default async function sponsorListPage() {
                 </Link>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-700">
+            <div className="bg-white text-gray-700 dark:bg-gray-800 rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-700">
                 <table className="w-full text-left">
                     <thead className="bg-gray-50 dark:bg-gray-700/50 text-sm uppercase text-gray-500">
                         <tr>
@@ -43,7 +43,7 @@ export default async function sponsorListPage() {
                                     </Link>
                                     <Link
                                         href={`/admin/sponsors/${sponsor.id}/transactions`}
-                                        className="p-2 text-gray-400 hover:text-blue-500"
+                                        className="p-2 text-gray-400 hover:text-brand-green"
                                         title="View Transactions"
                                     >
                                         Transactions

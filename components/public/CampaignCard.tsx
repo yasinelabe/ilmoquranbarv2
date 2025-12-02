@@ -6,7 +6,7 @@ import { GraduationCap } from 'lucide-react'
 import { Card } from '../ui/index'
 
 
-export function CampaignCard({ campaign, dict,locale }: { campaign: any, dict: any,locale:any }) {
+export function CampaignCard({ campaign, dict, locale }: { campaign: any, dict: any, locale: any }) {
     const collected = Number(campaign.collectedAmount || 0);
     const target = Number(campaign.targetAmount || 1);
     const progress = Math.min((collected / target) * 100, 100);
@@ -35,14 +35,15 @@ export function CampaignCard({ campaign, dict,locale }: { campaign: any, dict: a
             <p className="text-sm opacity-70 line-clamp-3 mb-4">{campaign.description}</p>
 
             {/* Progress */}
-            <div className="w-full rounded-full h-2 bg-surface-contrast mb-2">
-                <div style={{ width: `${progress}%`, backgroundColor: "rgb(var(--brand-gold))" }} />
+            <div className="w-full rounded-full h-4 bg-surface-contrast mb-2 border" style={{ borderColor: "rgb(var(--border-color))" }}>
+                <div style={{ width: `${progress}%`, backgroundColor: 'rgb(var(--brand-gold))' }}
+                    className="h-full rounded-full" />
             </div>
 
             <div className="flex justify-between text-sm font-bold">
                 <span>$ {collected}</span>
                 <span>
-                    $ {target} {dict?.donations.goal}
+                     {dict?.donations.goal}: ${target}
                 </span>
             </div>
 

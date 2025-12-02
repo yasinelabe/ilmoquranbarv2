@@ -3,7 +3,7 @@
 import { useFormStatus } from 'react-dom';
 import { useActionState, useEffect, useRef } from 'react';
 import toast from 'react-hot-toast';
-import { saveTeacherAction } from '@/app/actions/people';
+import { saveTeacherAction } from '@/app/actions/teacher';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import { Loader2 } from 'lucide-react';
@@ -46,7 +46,7 @@ export default function TeacherForm({ initialData, quranCircles }: TeacherFormPr
         {isEdit ? `Edit Teacher: ${initialData.fullname}` : 'Enroll New Teacher'}
       </h1>
 
-      <form ref={formRef} action={formAction} className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 space-y-5">
+      <form ref={formRef} action={formAction} className="bg-white text-gray-700 dark:bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 space-y-5">
 
         {isEdit && <input type="hidden" name="id" value={initialData.id} />}
 
@@ -69,7 +69,7 @@ export default function TeacherForm({ initialData, quranCircles }: TeacherFormPr
             name="sex"
             defaultValue={initialData?.sex || ''}
             required
-            className="w-full bg-white dark:bg-gray-700 dark:text-white border-2 border-transparent focus:border-brand-gold rounded-xl px-4 py-3 outline-none"
+            className="w-full bg-white text-gray-700 dark:bg-gray-700 dark:text-white border-2 border-transparent focus:border-brand-gold rounded-xl px-4 py-3 outline-none"
           >
             <option value="">-- Select Sex --</option>
             <option value="Male">Male</option>
@@ -88,7 +88,7 @@ export default function TeacherForm({ initialData, quranCircles }: TeacherFormPr
             name="quranCircleId"
             defaultValue={initialData?.quranCircleId || ''}
             required
-            className="w-full bg-white dark:bg-gray-700 dark:text-white border-2 border-transparent focus:border-brand-gold rounded-xl px-4 py-3 outline-none"
+            className="w-full bg-white text-gray-700 dark:bg-gray-700 dark:text-white border-2 border-transparent focus:border-brand-gold rounded-xl px-4 py-3 outline-none"
           >
             <option value="">-- Select Quran Circle --</option>
             {quranCircles.map((circle) => (
@@ -108,7 +108,7 @@ export default function TeacherForm({ initialData, quranCircles }: TeacherFormPr
             rows={3}
             defaultValue={initialData?.bio || ''}
             placeholder="A short description of the teacher's background or qualifications."
-            className="w-full bg-white dark:bg-gray-700 dark:text-white border-2 border-transparent focus:border-brand-gold rounded-xl px-4 py-3 outline-none resize-none"
+            className="w-full bg-white text-gray-700 dark:bg-gray-700 dark:text-white border-2 border-transparent focus:border-brand-gold rounded-xl px-4 py-3 outline-none resize-none"
           />
           {state?.errors?.bio && <p className="text-red-500 text-xs mt-1">{state.errors.bio[0]}</p>}
         </div>

@@ -1,17 +1,11 @@
 'use server'
 
-import { z } from 'zod';
 import { prisma } from '@/lib/db';
+import { FormState } from '@/lib/types';
+import { SponsorSchema } from '@/schema/zodSchema';
 import { revalidatePath } from 'next/cache';
 
-const SponsorSchema = z.object({
-    id: z.coerce.number().optional(),
-    fullname: z.string().min(3),
-    email: z.email("A valid email address is required."),
-    phone: z.string().min(7)
-});
-
-export async function saveSponsorAction(prevState: any, formData: FormData) {
+export async function saveSponsorAction(prevState: FormState, formData: FormData) {
     const rawData = Object.fromEntries(formData.entries());
 
     // Handle empty parentId select

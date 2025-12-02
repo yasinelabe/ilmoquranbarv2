@@ -2,10 +2,11 @@ import { prisma } from '@/lib/db';
 import { Card, Container } from '@/components/ui';
 import { CampaignCard } from '@/components/public/CampaignCard';
 import { getLocale } from '@/lib/locales';
+import { LocaleParams } from '@/lib/types';
 
 
 
-export default async function DonationsPage({ params }: { params: { locale: 'en' | 'so' | 'ar' } | Promise<{ locale: 'en' | 'so' | 'ar' }> }) {
+export default async function DonationsPage({ params }: { params: LocaleParams | Promise<LocaleParams> }) {
     const { locale } = await params;
     const dict = await getLocale(locale);
 
@@ -18,7 +19,7 @@ export default async function DonationsPage({ params }: { params: { locale: 'en'
         <Container className="py-12">
             <header className="text-center mb-12">
                 <h1 className="text-4xl font-extrabold text-brand-gold dark:text-white mb-3">
-                    {dict.donations.title}
+                    {dict.donations.title1}
                 </h1>
                 <p className="text-lg opacity-70">
                     {dict.donations.subtitle}

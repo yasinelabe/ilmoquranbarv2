@@ -10,14 +10,10 @@ import { Input } from '@/components/ui/Input';
 import { Card } from '@/components/ui';
 
 
-function SubmitButton() {
-    const { pending } = useFormStatus();
-    return <Button type="submit" disabled={pending}>{pending ? 'Sending...' : 'Send Message'}</Button>;
-}
-
 export default function ContactForm({ dict }: { dict: any }) {
     const [state, formAction] = useActionState(submitContactForm, undefined);
     const formRef = useRef<HTMLFormElement>(null);
+    const { pending } = useFormStatus();
 
     useEffect(() => {
         if (state?.message) {
@@ -73,11 +69,12 @@ export default function ContactForm({ dict }: { dict: any }) {
                     rows={5}
                     required
                     placeholder={dict.placeholders.message}
-                    className="w-full rounded-xl bg-background border border-transparent focus:border-brand-green px-4 py-3 outline-none"
+                    className="w-full rounded-xl bg-background border focus:border-brand-green px-4 py-3 outline-none"
+                    style={{borderColor:'rgb(var(--border-color))'}}
                 />
             </div>
 
-            <SubmitButton/>
+            <Button type="submit" disabled={pending}>{pending ? dict.sending : dict.send}</Button>;
         </Card>
     );
 }

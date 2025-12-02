@@ -5,14 +5,12 @@ import { Target, Lightbulb, Building } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image'
 import AboutImage from '../../../../public/students2.jpg'
+import { LocaleParams } from '@/lib/types';
 
-export default async function AboutPage({ params }: { params: { locale: 'en' | 'so' | 'ar' } | Promise<{ locale: 'en' | 'so' | 'ar' }> }) {
-
+export default async function AboutPage({ params }: { params: LocaleParams | Promise<LocaleParams> }) {
     const { locale } = await params;
     const dict = await getLocale(locale);
     const t = dict.about;
-
-
     const features = [
         { icon: Target, title: t.pillars.reachTitle, description: t.pillars.reachDesc },
         { icon: Building, title: t.pillars.mosqueTitle, description: t.pillars.mosqueDesc },

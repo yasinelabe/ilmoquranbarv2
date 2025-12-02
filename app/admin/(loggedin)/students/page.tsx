@@ -21,7 +21,7 @@ export default async function StudentListPage() {
         </Link>
       </div>
 
-      <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-700">
+      <div className="bg-white text-gray-700 dark:bg-gray-800 rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-700">
         <table className="w-full text-left">
           <thead className="bg-gray-50 dark:bg-gray-700/50 text-sm uppercase text-gray-500">
             <tr>

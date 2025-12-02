@@ -7,32 +7,13 @@ import { processDonation } from '@/app/actions/donate';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import Image from 'next/image';
+import { paymentMethods } from '@/lib/constants';
 
-// Payment method type
-type PaymentMethod = 'waafipay';
 
-// Payment method configuration
-const paymentMethods = {
-  waafipay: {
-    id: 'waafipay' as PaymentMethod,
-    name: 'WaafiPay',
-    logo: '/payments/waafipay.png',
-  }
-} as const;
-
-// Shared component for form submission button
-function SubmitButton() {
-  const { pending } = useFormStatus();
-
-  return (
-    <Button type="submit" disabled={pending} className="w-full">
-      {pending ? 'Sending Request...' : `Donate Now`}
-    </Button>
-  );
-}
 
 export default function DonationForm({ campaignId, dict }: { campaignId: number, dict: any }) {
   const [state, formAction] = useActionState(processDonation, null);
+  const { pending } = useFormStatus();
 
   // Effect to handle feedback
   useEffect(() => {
@@ -47,7 +28,18 @@ export default function DonationForm({ campaignId, dict }: { campaignId: number,
         {dict.donations.sponsorNow}
       </h3>
 
-      <form action={formAction} className="space-y-4">
+      <form
+        action={(formData) => {
+          const raw = formData.get("phone")?.toString().trim() || "";
+
+          // Remove leading zeros & prepend country code
+          const cleaned = raw.replace(/^0+/, "");
+          formData.set("phone", `252${cleaned}`);
+
+          return formAction(formData);
+        }}
+        className="space-y-4 ltr:text-left"
+      >
         <input type="hidden" name="campaignId" value={campaignId} />
         <input type="hidden" name="paymentMethod" value="waafipay" />
 
@@ -63,7 +55,7 @@ export default function DonationForm({ campaignId, dict }: { campaignId: number,
             step="0.01"
             min="1"
             required
-            className="dark:bg-gray-700 dark:text-white"
+            className="dark:bg-gray-700 dark:text-white text-left"
           />
         </div>
 
@@ -77,32 +69,29 @@ export default function DonationForm({ campaignId, dict }: { campaignId: number,
             name="fullname"
             placeholder="Your Name (for receipt)"
             required
-            className="dark:bg-gray-700 dark:text-white"
+            className="dark:bg-gray-700 dark:text-white text-left"
           />
         </div>
 
-        {/* Phone Number with Pre-filled Country Code */}
+        {/* Phone Number */}
         <div>
           <label className="block text-sm font-bold text-plain dark:text-gray-100 mb-1 ml-1">
             {dict.donations.phone}
           </label>
 
           <div className="flex w-full">
-            {/* Country Code Box */}
             <span
               className="
-        inline-flex items-center px-4 
-        border border-gray-300 dark:border-gray-600 
-        rounded-l-lg 
-        bg-gray-100 dark:bg-gray-700 
-        text-gray-800 dark:text-gray-200 
-        text-sm
-      "
+    inline-flex items-center px-4 
+    border border-gray-300 dark:border-gray-600 
+    bg-gray-100 dark:bg-gray-700 
+    text-gray-800 dark:text-gray-200 
+    text-sm
+    ltr:rounded-l-lg rtl:rounded-r-lg
+  "
             >
               +252
             </span>
-
-            {/* Phone Number Input */}
             <Input
               type="tel"
               name="phone"
@@ -110,30 +99,28 @@ export default function DonationForm({ campaignId, dict }: { campaignId: number,
               required
               pattern="^[0-9]{8,9}$"
               className="
-        border-l-0 
-        dark:bg-gray-700 dark:text-white 
-        flex-1
-      "
+          border-l-0 
+          dark:bg-gray-700 dark:text-white 
+          flex-1 text-left
+        "
             />
           </div>
 
           <p className="text-xs text-gray-400 dark:text-gray-500 mt-1 ml-1">
-           {dict.donations.phone_note}
+            {dict.donations.phone_note}
           </p>
         </div>
 
-
-        {/* Payment Method Selection */}
+        {/* Payment Method */}
         <div className="pt-2">
           <label className="block text-sm font-bold text-plain dark:text-gray-100 mb-3 ml-1">
-              {dict.donations.paymentMethod}
+            {dict.donations.paymentMethod}
           </label>
 
           <div className="space-y-2">
 
-            {/* WaafiPay Option */}
             <div className="flex items-center p-3 border-2 border-brand-green dark:border-brand-gold rounded-lg 
-                bg-green-50 dark:bg-green-900/20 cursor-pointer">
+          bg-green-50 dark:bg-green-900/20 cursor-pointer">
 
               {/* Logo */}
               <div className="flex items-center justify-center w-10 h-10 bg-white dark:bg-gray-700 rounded-full mr-3">
@@ -154,7 +141,6 @@ export default function DonationForm({ campaignId, dict }: { campaignId: number,
                 </div>
               </div>
 
-              {/* Selected indicator */}
               <div className="w-5 h-5 rounded-full border-2 border-brand-green dark:border-brand-gold flex items-center justify-center">
                 <div className="w-3 h-3 rounded-full bg-brand-green dark:bg-brand-gold"></div>
               </div>
@@ -164,9 +150,12 @@ export default function DonationForm({ campaignId, dict }: { campaignId: number,
         </div>
 
         <div className="pt-4">
-          <SubmitButton />
+          <Button type="submit" disabled={pending} className="w-full">
+            {pending ? 'Sending Request...' : `Donate Now`}
+          </Button>
         </div>
       </form>
+
     </div>
   );
 }

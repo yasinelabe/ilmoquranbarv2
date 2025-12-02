@@ -45,7 +45,7 @@ export default function sponsorForm({ initialData}: sponsorFormProps) {
                 {isEdit ? `Edit sponsor: ${initialData.fullname}` : 'Add New sponsor'}
             </h1>
 
-            <form ref={formRef} action={formAction} className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 space-y-5">
+            <form ref={formRef} action={formAction} className="bg-white text-gray-700 dark:bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 space-y-5">
 
                 {isEdit && <input type="hidden" name="id" value={initialData.id} />}
 

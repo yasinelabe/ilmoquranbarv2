@@ -5,30 +5,75 @@ import { jwtVerify } from 'jose';
 const PUBLIC_LOCALES = ['en', 'so', 'ar'];
 const SECRET_KEY = new TextEncoder().encode(process.env.JWT_SECRET);
 
+// --- Paths that DO NOT require authentication ---
+const PUBLIC_PATHS = [
+    '/api/login', // If you have a separate API route for login
+    '/admin/login',
+];
+
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const session = request.cookies.get('session')?.value;
+  const isPublicPath = PUBLIC_PATHS.includes(pathname);
 
-  // --- 1. Protect Admin Routes ---------------------
+  // --- 1. API Route Authentication ---------------------
+  if (pathname.startsWith('/api')) {
+    // If it's a public API path (like login), let it pass
+    if (isPublicPath) {
+      return NextResponse.next();
+    }
+
+    // Otherwise, require a session
+    if (!session) {
+      // Return a 401 Unauthorized response for API calls
+      return new NextResponse(
+          JSON.stringify({ success: false, message: 'Authentication required.' }),
+          { status: 401, headers: { 'content-type': 'application/json' } }
+      );
+    }
+    
+    // Verify the JWT session
+    try {
+      await jwtVerify(session, SECRET_KEY);
+      return NextResponse.next(); // Valid token, proceed
+    } catch (e) {
+      // Invalid token
+      return new NextResponse(
+          JSON.stringify({ success: false, message: 'Invalid or expired token.' }),
+          { status: 401, headers: { 'content-type': 'application/json' } }
+      );
+    }
+  }
+
+  // --- 2. Protect Admin Routes (UI) ---------------------
   if (pathname.startsWith('/admin')) {
+    // If user is trying to access /admin/login, let them pass
+    if (isPublicPath) {
+      return NextResponse.next();
+    }
+
+    // Redirect /admin to /admin/dashboard
     if (pathname === '/admin') {
       return NextResponse.redirect(new URL('/admin/dashboard', request.url));
     }
 
-    const session = request.cookies.get('session')?.value;
-    if (!session && pathname !== '/admin/login') {
+    // Require session for all other admin pages
+    if (!session) {
       return NextResponse.redirect(new URL('/admin/login', request.url));
     }
 
+    // Verify the JWT session for admin UI pages
     try {
-      if (session) await jwtVerify(session, SECRET_KEY);
+      await jwtVerify(session, SECRET_KEY);
+      // Valid token, proceed
+      return NextResponse.next();
     } catch {
+      // Invalid token, redirect to login
       return NextResponse.redirect(new URL('/admin/login', request.url));
     }
-
-    return NextResponse.next();
   }
 
-  // --- 2. Public Locale Routing ---------------------
+  // --- 3. Public Locale Routing ---------------------
   const segments = pathname.split('/');
   const locale = segments[1];
 
@@ -54,5 +99,6 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
+  // Matches all paths except static files, _next internal paths, etc.
   matcher: ['/((?!_next|static|.*\\..*).*)'],
 };

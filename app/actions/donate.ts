@@ -2,8 +2,8 @@
 
 import { prisma } from '@/lib/db';
 import { WaafiPay } from '@/lib/payment/waafipay';
+import { DonationSchema } from '@/schema/zodSchema';
 import { v4 as uuidv4 } from 'uuid';
-import { z } from 'zod';
 
 const logger = {
     info: (message: string, context?: any) => console.log(`[INFO] ${new Date().toISOString()} - ${message}`, context),
@@ -25,14 +25,6 @@ const waafiErrorMessages: Record<string, string> = {
     "5206": "Your Account Balance is not sufficient."
 };
 
-
-// Validation Schema
-const DonationSchema = z.object({
-    campaignId: z.number(),
-    amount: z.number().min(0.1),
-    fullname: z.string().min(3),
-    phone: z.string().min(9), // E.g., 2526...
-});
 
 export async function processDonation(prevState: any, formData: FormData) {
     const rawData = {

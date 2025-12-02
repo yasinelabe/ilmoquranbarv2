@@ -1,16 +1,11 @@
-import { Mail, Phone, MapPin } from 'lucide-react';
 import ContactForm from './ContactForm';
 import { Card, Container } from '@/components/ui';
 import { getLocale } from '@/lib/locales';
+import { LocaleParams } from '@/lib/types';
+import { contactInfo } from '@/lib/constants';
 
 
-const contactInfo: { icon: any; label: string; labelKey: 'phone' | 'email' | 'location'; value: string; link: string }[] = [
-    { icon: Phone, label: 'Phone', labelKey: 'phone', value: '+252 6XXXXXXX', link: 'tel:+2526XXXXXXX' },
-    { icon: Mail, label: 'Email', labelKey: 'email', value: 'info@ilmoquraanbar.com', link: 'mailto:info@ilmoquraanbar.com' },
-    { icon: MapPin, label: 'Location', labelKey: 'location', value: 'Hargeisa, Somaliland', link: '#' },
-];
-
-export default async function ContactPage({ params }: { params: { locale: 'en' | 'so' | 'ar' } | Promise<{ locale: 'en' | 'so' | 'ar' }> }) {
+export default async function ContactPage({ params }: { params: LocaleParams | Promise<LocaleParams> }) {
     const { locale } = await params;
     const dict = await getLocale(locale);
     const t = dict.contact;

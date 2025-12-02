@@ -57,11 +57,11 @@ model Mosque {
 }
 
 model QuranCircle {
-  id        Int         @id @default(autoincrement())
+  id        Int        @id @default(autoincrement())
   name      String
   capacity  Int
   mosqueId  Int
-  mosque    Mosque      @relation(fields: [mosqueId], references: [id])
+  mosque    Mosque     @relation(fields: [mosqueId], references: [id])
   teachers  Teacher[]
   students  Student[]
   campaigns Campaign[]
@@ -100,20 +100,21 @@ model Parent {
 
 // --- Donation Management ---
 model Campaign {
-  id             Int           @id @default(autoincrement())
-  name           String
-  type           String        // 'STUDENT_SPONSORSHIP' | 'CIRCLE_SPONSORSHIP'
-  studentId      Int?
-  quranCircleId  Int?
-  targetAmount   Decimal       @db.Decimal(10, 2)
-  collectedAmount Decimal      @default(0) @db.Decimal(10, 2)
-  image          String?
-  description    String        @db.Text
-  createdAt      DateTime      @default(now())
-  isComplete     Boolean       @default(false)
-  student        Student?      @relation(fields: [studentId], references: [id])
-  quranCircle    QuranCircle?  @relation(fields: [quranCircleId], references: [id])
-  transactions   Transaction[]
+  id              Int           @id @default(autoincrement())
+  name            String
+  type            String // 'STUDENT_SPONSORSHIP' | 'CIRCLE_SPONSORSHIP'
+  studentId       Int?
+  quranCircleId   Int?
+  targetAmount    Decimal       @db.Decimal(10, 2)
+  collectedAmount Decimal       @default(0) @db.Decimal(10, 2)
+  image           String?
+  description     String        @db.Text
+  createdAt       DateTime      @default(now())
+  isComplete      Boolean       @default(false)
+  student         Student?      @relation(fields: [studentId], references: [id])
+  quranCircle     QuranCircle?  @relation(fields: [quranCircleId], references: [id])
+  transactions    Transaction[]
+  emailLogs       EmailLog[]
 }
 
 model Sponsor {
@@ -122,6 +123,7 @@ model Sponsor {
   phone        String
   email        String?
   transactions Transaction[]
+  emailLogs    EmailLog[]
 }
 
 model Transaction {
@@ -134,4 +136,27 @@ model Transaction {
   createdAt   DateTime @default(now())
   sponsor     Sponsor  @relation(fields: [sponsorId], references: [id])
   campaign    Campaign @relation(fields: [campaignId], references: [id])
+}
+
+model EmailTemplate {
+  id        Int        @id @default(autoincrement())
+  name      String     @unique
+  subject   String
+  body      String     @db.Text // The template body with dynamic parameters
+  isDefault Boolean    @default(false)
+  createdAt DateTime   @default(now())
+  emailLogs EmailLog[]
+}
+
+model EmailLog {
+  id          Int           @id @default(autoincrement())
+  campaignId  Int
+  campaign    Campaign      @relation(fields: [campaignId], references: [id])
+  sponsorId   Int
+  sponsor     Sponsor       @relation(fields: [sponsorId], references: [id])
+  templateId  Int
+  template    EmailTemplate @relation(fields: [templateId], references: [id])
+  sentAt      DateTime      @default(now())
+  status      String // 'SUCCESS', 'FAILED'
+  errorDetail String?
 }

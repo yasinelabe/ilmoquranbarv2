@@ -1,35 +1,11 @@
 'use server'
 
-import { z } from 'zod';
 import { prisma } from '@/lib/db';
 import { revalidatePath } from 'next/cache';
+import { TeacherSchema } from '@/schema/zodSchema';
+import { FormState } from '@/lib/types';
 
-// --- SCHEMAS ---
-
-// Teacher Schema (NEW)
-const TeacherSchema = z.object({
-    id: z.coerce.number().optional(),
-    fullname: z.string().min(3, "Full name is required."),
-    bio: z.string(),
-    quranCircleId: z.coerce.number().min(1, "Circle assignment is required."),
-    sex: z.enum(['Male', 'Female']),
-});
-
-// Helper type for form state
-type FormState = {
-    success: boolean;
-    message: string;
-    errors?: Record<string, string[]>;
-} | undefined;
-
-// --- ACTIONS ---
-
-// 1. STUDENT ACTIONS (Retained for completeness)
-export async function saveStudentAction(prevState: any, formData: FormData) { /* [Immersive content redacted for brevity.] */ }
-
-export async function deleteStudentAction(formData: FormData) { /* [Immersive content redacted for brevity.] */ }
-
-// 2. TEACHER ACTIONS (NEW)
+// 2. TEACHER ACTIONS
 export async function saveTeacherAction(prevState: FormState, formData: FormData): Promise<FormState> {
     const rawData = Object.fromEntries(formData.entries());
     const validate = TeacherSchema.safeParse(rawData);

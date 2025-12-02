@@ -7,8 +7,8 @@
         "donate": "Ku Deeq"
     },
     "hero": {
-        "badge": "Ka caawi ilmo inuu barto Qur’aanka",
-        "title": "Ugu Deeq Barashada Qur’aanka, Ardayda Aan awoodin",
+        "badge": "Rasuulku wuxuu yidhi ﷺ",
+        "title": "Kuwa idinka ugu wanaagsan waa kuwa Qur’aanka barta oo bara.",
         "subtitle": "Ka qayb qaado baridda Qur’aanka oo iftiimi Mustaqbalka Ubadka.",
         "cta": "Deeq Bixi",
         "more": "Wax Badan Ka Ogow"
@@ -127,7 +127,8 @@
         "ctaButton": "Itus Tabarucaadka"
     },
     "donations": {
-        "title": "Kafaalo Qaado, Baddal Nolol",
+        "title1": "Kafaalo Qaado Xalqad, Baddal Nolol",
+        "title2": "Kafaalo Qaado Arday, Baddal Nolol",
         "subtitle": "Dooro olole sadaqo jariya ah.",
         "noCampaigns": "Wax olole ah ma jiro hadda.",
         "goal": "La rabo",
@@ -143,6 +144,11 @@
         "campaignAbout": "Faahfaahinta Ololaha",
         "studentProfile": "Macluumaadka Ardayga",
         "locationDetails": "Faahfaahinta Goobta",
-        "securePayment": "Ugu Bixi Si Ammaan Ah  WaafiPay."
+        "securePayment": "Ugu Bixi Si Ammaan Ah  WaafiPay.",
+        "name": "Magaca",
+        "age": "Da'da",
+        "circle": "Xalqadda",
+        "mosque": "Masjidka",
+        "location": "Goobta"
     }
 }

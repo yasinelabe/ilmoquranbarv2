@@ -1,6 +1,5 @@
 import { Sidebar } from '@/components/admin/Sidebar';
 import { SidebarToggle } from '@/components/admin/SidebarToggle';
-import { ThemeToggle } from '@/components/ui/ThemeToggler';
 import Link from 'next/link';
 
 export default function AdminLayout({
@@ -18,7 +17,7 @@ export default function AdminLayout({
       <div className="flex-1 flex flex-col">
         
         {/* Admin Header */}
-        <header className="sticky top-0 z-30 w-full text-plain bg-white shadow-sm border-b border-gray-100 dark:border-gray-800 h-16">
+        <header className="sticky top-0 z-30 w-full text-plain bg-white text-gray-700 shadow-sm border-b border-gray-100 dark:border-gray-800 h-16">
           <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 h-full flex justify-between items-center">
             
             {/* Mobile Menu Toggle & Brand */}

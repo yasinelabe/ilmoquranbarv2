@@ -1,5 +1,4 @@
 'use server';
-// app/actions/users.ts
 import { prisma } from '@/lib/db';
 import bcrypt from 'bcryptjs';
 import { redirect } from 'next/navigation';
@@ -18,7 +17,6 @@ export async function createUserAction(formData: FormData) {
     data: { fullname, username, password: hash }
   });
 
-  // redirect back to users list
   redirect('/admin/users');
 }
 
@@ -54,6 +52,5 @@ export async function toggleUserActiveAction(formData: FormData) {
   if (!u) throw new Error('User not found');
 
   await prisma.user.update({ where: { id }, data: { isActive: !u.isActive }});
-  // redirect to the current page (users list)
   redirect('/admin/users');
 }

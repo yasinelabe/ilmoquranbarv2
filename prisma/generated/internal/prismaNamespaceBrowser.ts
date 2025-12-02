@@ -62,7 +62,9 @@ export const ModelName = {
   Parent: 'Parent',
   Campaign: 'Campaign',
   Sponsor: 'Sponsor',
-  Transaction: 'Transaction'
+  Transaction: 'Transaction',
+  EmailTemplate: 'EmailTemplate',
+  EmailLog: 'EmailLog'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -215,6 +217,31 @@ export const TransactionScalarFieldEnum = {
 export type TransactionScalarFieldEnum = (typeof TransactionScalarFieldEnum)[keyof typeof TransactionScalarFieldEnum]
 
 
+export const EmailTemplateScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  subject: 'subject',
+  body: 'body',
+  isDefault: 'isDefault',
+  createdAt: 'createdAt'
+} as const
+
+export type EmailTemplateScalarFieldEnum = (typeof EmailTemplateScalarFieldEnum)[keyof typeof EmailTemplateScalarFieldEnum]
+
+
+export const EmailLogScalarFieldEnum = {
+  id: 'id',
+  campaignId: 'campaignId',
+  sponsorId: 'sponsorId',
+  templateId: 'templateId',
+  sentAt: 'sentAt',
+  status: 'status',
+  errorDetail: 'errorDetail'
+} as const
+
+export type EmailLogScalarFieldEnum = (typeof EmailLogScalarFieldEnum)[keyof typeof EmailLogScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -330,4 +357,21 @@ export const TransactionOrderByRelevanceFieldEnum = {
 } as const
 
 export type TransactionOrderByRelevanceFieldEnum = (typeof TransactionOrderByRelevanceFieldEnum)[keyof typeof TransactionOrderByRelevanceFieldEnum]
+
+
+export const EmailTemplateOrderByRelevanceFieldEnum = {
+  name: 'name',
+  subject: 'subject',
+  body: 'body'
+} as const
+
+export type EmailTemplateOrderByRelevanceFieldEnum = (typeof EmailTemplateOrderByRelevanceFieldEnum)[keyof typeof EmailTemplateOrderByRelevanceFieldEnum]
+
+
+export const EmailLogOrderByRelevanceFieldEnum = {
+  status: 'status',
+  errorDetail: 'errorDetail'
+} as const
+
+export type EmailLogOrderByRelevanceFieldEnum = (typeof EmailLogOrderByRelevanceFieldEnum)[keyof typeof EmailLogOrderByRelevanceFieldEnum]
 

@@ -1,11 +1,11 @@
 'use server';
 
-import { CampaignSchema } from "./campaign/schema";
 import { prisma } from "@/lib/db";
 import { redirect } from "next/navigation";
 import fs from "fs";
 import path from "path";
 import { randomUUID } from "crypto";
+import { CampaignSchema } from "@/schema/zodSchema";
 
 export async function createCampaignAction(formData: FormData) {
   const raw = {
@@ -55,4 +55,36 @@ export async function createCampaignAction(formData: FormData) {
   });
 
   redirect("/admin/campaigns");
+}
+
+export async function getCampaignSponsors(campaignId: number) {
+  return prisma.campaign.findUnique({
+    where: { id: campaignId },
+    select: {
+      name: true,
+      type: true,
+      quranCircle: { select: { name: true, students: { select: { fullname: true } } } },
+      student: { select: { fullname: true } },
+      transactions: {
+        where: {status: "COMPLETED"},
+        select: {
+          sponsor: {
+            select: { id: true, fullname: true, email: true },
+          },
+        },
+        distinct: ['sponsorId'],
+      },
+    },
+  });
+}
+
+export async function getCampaigns() {
+  return prisma.campaign.findMany({
+    select: { id: true, name: true, type: true },
+    orderBy: { createdAt: 'desc' },
+  });
+}
+
+export async function getEmailTemplates() {
+  return prisma.emailTemplate.findMany()
 }

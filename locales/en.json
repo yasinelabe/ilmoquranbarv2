@@ -7,8 +7,8 @@
         "donate": "Donate"
     },
     "hero": {
-        "badge": "Empower a Child with Qur’an",
-        "title": "Give the Gift of Qur'an and Change a Life Forever",
+        "badge": "The Messenger said ﷺ",
+        "title": "The best of you are those who learn the Qur’an and teach it.",
         "subtitle": "Help support Quran education and transform young lives with ongoing knowledge.",
         "cta": "Donate Now",
         "more": "Learn More"
@@ -126,7 +126,8 @@
         "ctaButton": "See Active Campaigns"
     },
     "donations": {
-        "title": "Sponsor a Circle, Change a Life",
+        "title1": "Sponsor a Circle, Change a Life",
+        "title2": "Help sponsor a young student’s education.",
         "subtitle": "Choose an active campaign to make your Sadaqa Jariya.",
         "noCampaigns": "No active campaigns at the moment.",
         "goal": "Goal",
@@ -142,6 +143,11 @@
         "campaignAbout": "About the Campaign",
         "studentProfile": "Student Profile",
         "locationDetails": "Location Details",
-        "securePayment": "Secure payment via WaafiPay."
+        "securePayment": "Secure payment via WaafiPay.",
+        "name": "Name",
+        "age": "Age",
+        "circle": "Circle",
+        "mosque": "Mosque",
+        "location": "Location"
     }
 }

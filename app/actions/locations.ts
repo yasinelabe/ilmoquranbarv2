@@ -1,35 +1,9 @@
 'use server'
 
-import { z } from 'zod';
 import { prisma } from '@/lib/db';
 import { revalidatePath } from 'next/cache';
-
-// --- Schemas for Validation ---
-
-const CountrySchema = z.object({
-  id: z.coerce.number().optional(),
-  name: z.string().min(3, "Country name is required."),
-});
-
-const RegionSchema = z.object({
-  id: z.coerce.number().optional(),
-  name: z.string().min(3, "Region name is required."),
-  countryId: z.coerce.number({ error: "Country ID is required." }),
-});
-
-const DistrictSchema = z.object({
-  id: z.coerce.number().optional(),
-  name: z.string().min(3, "District name is required."),
-  regionId: z.coerce.number({ error: "Region ID is required." }),
-});
-
-// Helper type for form state
-type FormState = {
-  success: boolean;
-  message: string;
-  errors?: Record<string, string[]>;
-} | undefined;
-
+import { FormState } from '@/lib/types';
+import { CountrySchema, DistrictSchema, RegionSchema } from '@/schema/zodSchema';
 
 // 1. Country CRUD
 export async function saveCountryAction(prevState: FormState, formData: FormData): Promise<FormState> {

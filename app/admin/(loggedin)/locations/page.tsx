@@ -45,7 +45,7 @@ export default async function LocationListPage() {
           <div key={country.id} className="border-l-4 border-brand-green/50 pl-4 py-2">
             
             {/* Country Header */}
-            <div className="flex justify-between items-center p-3 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+            <div className="flex justify-between items-center p-3 bg-white text-gray-700 dark:bg-gray-800 rounded-lg shadow-md">
               <h2 className="text-xl font-bold text-brand-gold flex items-center">
                 <Globe size={20} className="mr-2" /> {country.name}
               </h2>
@@ -74,7 +74,7 @@ export default async function LocationListPage() {
                   {/* Districts List */}
                   <div className="ml-4 mt-2 space-y-2">
                     {region.districts.map((district) => (
-                      <div key={district.id} className="flex justify-between items-center text-sm p-2 bg-white dark:bg-gray-800/70 rounded-md border border-gray-100 dark:border-gray-700">
+                      <div key={district.id} className="flex justify-between items-center text-sm p-2 bg-white text-gray-700 dark:bg-gray-800/70 rounded-md border border-gray-100 dark:border-gray-700">
                         <span className="flex items-center text-gray-700 dark:text-gray-300">
                           <MapPin size={16} className="mr-2 text-gray-400" />
                           {district.name}

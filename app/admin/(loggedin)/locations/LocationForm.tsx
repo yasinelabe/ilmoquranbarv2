@@ -60,7 +60,7 @@ export default function LocationForm({ type, initialData, countries = [], region
         {isEdit ? `Edit ${entityTitle}` : `Create New ${entityTitle}`}
       </h1>
       
-      <form ref={formRef} action={formAction} className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 space-y-5">
+      <form ref={formRef} action={formAction} className="bg-white text-gray-700 dark:bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 space-y-5">
         
         {isEdit && <input type="hidden" name="id" value={initialData.id} />}
 
@@ -112,6 +112,7 @@ export default function LocationForm({ type, initialData, countries = [], region
             defaultValue={initialData?.name || ''} 
             required 
             placeholder={`Enter ${entityTitle} Name`}
+            className='text-white'
           />
           {state?.errors?.name && <p className="text-red-500 text-xs mt-1">{state.errors.name[0]}</p>}
         </div>

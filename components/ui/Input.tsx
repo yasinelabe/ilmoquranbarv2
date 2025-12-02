@@ -4,7 +4,7 @@ export function Input(props: React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <input
       {...props} style={{ borderColor: "rgb(var(--border-color))" }}
-      className="w-full bg-brand-white border  focus:border-brand-green  px-4 py-3 outline-none text-plain dark:text-gray-800 font-medium placeholder-gray-400"
+      className="w-full  border  focus:border-brand-green  px-4 py-3 outline-none text-plain font-medium"
     />
   );
 }

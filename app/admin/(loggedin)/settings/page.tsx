@@ -7,7 +7,7 @@ export default function SettingsPage() {
         <Settings size={28} className="mr-3 text-gray-400" /> System Settings
       </h1>
       
-      <div className="p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
+      <div className="p-8 bg-white text-gray-700 dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
         <h2 className="text-xl font-bold mb-4 text-brand-gold dark:text-brand-gold">General Configuration</h2>
         <div className="space-y-4 text-gray-700 dark:text-gray-300">
             <p>This is the placeholder for managing global application settings, such as system name, default capacities, and email configuration.</p>

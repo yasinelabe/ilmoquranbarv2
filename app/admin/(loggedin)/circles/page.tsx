@@ -41,7 +41,7 @@ export default async function QuranCircleListPage() {
         </Link>
       </div>
 
-      <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-700">
+      <div className="bg-white text-gray-700 dark:bg-gray-800 rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-700">
         <table className="w-full text-left">
           <thead className="bg-gray-50 dark:bg-gray-700/50 text-sm uppercase text-gray-500">
             <tr>
@@ -75,7 +75,7 @@ export default async function QuranCircleListPage() {
                     </span>
                   </td>
                   <td className="p-4">
-                    <div className={`font-semibold flex items-center ${isFull ? 'text-red-500' : 'text-blue-500'}`}>
+                    <div className={`font-semibold flex items-center ${isFull ? 'text-red-500' : 'text-brand-green'}`}>
                       <Users size={14} className="mr-1.5" />
                       {capacityText}
                     </div>

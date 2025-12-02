@@ -51,7 +51,7 @@ export class WaafiPay {
         apiUserId,
         apiKey,
         baseUrl,
-        timeoutMs = 15000,
+        timeoutMs = 200000,
     }: WaafiConfig = {}) {
 
         this.merchantUid = merchantUid || process.env.WAAFI_MERCHANT_UID || '';

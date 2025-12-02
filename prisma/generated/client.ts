@@ -99,3 +99,13 @@ export type Sponsor = Prisma.SponsorModel
  * 
  */
 export type Transaction = Prisma.TransactionModel
+/**
+ * Model EmailTemplate
+ * 
+ */
+export type EmailTemplate = Prisma.EmailTemplateModel
+/**
+ * Model EmailLog
+ * 
+ */
+export type EmailLog = Prisma.EmailLogModel

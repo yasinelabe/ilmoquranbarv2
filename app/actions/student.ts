@@ -1,19 +1,11 @@
 'use server'
 
-import { z } from 'zod';
 import { prisma } from '@/lib/db';
 import { revalidatePath } from 'next/cache';
+import { StudentSchema } from '@/schema/zodSchema';
+import { FormState } from '@/lib/types';
 
-const StudentSchema = z.object({
-  id: z.coerce.number().optional(),
-  fullname: z.string().min(3),
-  age: z.coerce.number().min(4).max(20),
-  sex: z.enum(['Male', 'Female']),
-  quranCircleId: z.coerce.number(),
-  parentId: z.coerce.number().optional(),
-});
-
-export async function saveStudentAction(prevState: any, formData: FormData) {
+export async function saveStudentAction(prevState: FormState, formData: FormData) {
   const rawData = Object.fromEntries(formData.entries());
   
   // Handle empty parentId select

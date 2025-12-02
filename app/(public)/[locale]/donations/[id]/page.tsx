@@ -5,13 +5,33 @@ import { MapPin, User, GraduationCap } from 'lucide-react';
 import DonationForm from './DonationForm';
 import { getLocale } from '@/lib/locales';
 
-export default async function CampaignDetailPage({ params }: { params: { locale: 'en' | 'so' | 'ar',id: string } }) {
-    const {locale,id} = await params
+export default async function CampaignDetailPage({ params }: { params: { locale: 'en' | 'so' | 'ar', id: string } }) {
+    const { locale, id } = await params
     const dict = await getLocale(locale);
     const campaign = await prisma.campaign.findUnique({
         where: { id: Number(id) },
         include: {
-            student: true,
+            student: {
+                include: {
+                    quranCircle: {
+                        include: {
+                            mosque: {
+                                include: {
+                                    district: {
+                                        include: {
+                                            region: {
+                                                include: {
+                                                    country: true
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             quranCircle: {
                 include: {
                     mosque: {
@@ -19,7 +39,9 @@ export default async function CampaignDetailPage({ params }: { params: { locale:
                             district: {
                                 include: {
                                     region: {
-                                        include: { country: true }
+                                        include: {
+                                            country: true
+                                        }
                                     }
                                 }
                             }
@@ -29,6 +51,7 @@ export default async function CampaignDetailPage({ params }: { params: { locale:
             }
         }
     });
+
 
     if (!campaign || campaign.isComplete) return notFound();
 
@@ -52,8 +75,8 @@ export default async function CampaignDetailPage({ params }: { params: { locale:
 
                         <p className="text-plain dark:text-gray-400 mb-6 text-lg">
                             {campaign.type === 'STUDENT_SPONSORSHIP'
-                                ? 'Help sponsor a young student’s education.'
-                                : 'Support a new Quranic learning center.'}
+                                ? dict.donations.title2
+                                : dict.donations.title1}
                         </p>
 
                         <div className="w-full rounded-2xl surface-contrast mb-6 overflow-hidden flex items-center justify-center">
@@ -88,13 +111,13 @@ export default async function CampaignDetailPage({ params }: { params: { locale:
                                 ${collected.toLocaleString()}
                             </span>
                             <span className="text-brand-gold dark:text-brand-gold">
-                                ${target.toLocaleString()} Goal
+                                ${target.toLocaleString()} {dict.donations.goal}
                             </span>
                         </div>
 
                         {/* Description */}
                         <h2 className="text-2xl font-extrabold text-brand-gold dark:text-brand-gold mt-10 mb-4">
-                            About the Campaign
+                           {dict.donations.campaignAbout}
                         </h2>
 
                         <p className="text-plain dark:text-gray-200 leading-relaxed">
@@ -109,13 +132,14 @@ export default async function CampaignDetailPage({ params }: { params: { locale:
                         {campaign.student && (
                             <>
                                 <h3 className="text-xl font-extrabold text-brand-gold dark:text-brand-gold mb-4 flex items-center" >
-                                    <User size={20} className="mr-2" /> Student Profile
+                                    <User size={20} className="mr-2" /> {dict.donations.studentProfile}
                                 </h3>
 
                                 <div className="space-y-1 text-plain dark:text-gray-200 mb-6">
-                                    <p>Name: {campaign.student.fullname}</p>
-                                    <p>Age: {campaign.student.age}</p>
-                                    <p>Circle: {campaign.quranCircle?.name}</p>
+                                    <p>{dict.donations.name}: {campaign.student.fullname}</p>
+                                    <p>{dict.donations.age}: {campaign.student.age}</p>
+                                    <p>{dict.donations.circle}: {campaign.student.quranCircle?.name}</p>
+                                    <p>{dict.donations.mosque}: {campaign.student.quranCircle.mosque?.name} , {campaign.student.quranCircle.mosque.district.name}, {campaign.student.quranCircle.mosque.district.region.name},{campaign.student.quranCircle.mosque.district.region.country.name}</p>
                                 </div>
                             </>
                         )}
@@ -123,18 +147,18 @@ export default async function CampaignDetailPage({ params }: { params: { locale:
                         {campaign.quranCircle && (
                             <>
                                 <h3 className="text-xl font-extrabold text-brand-gold dark:text-brand-gold mb-4 flex items-center ">
-                                    <MapPin size={20} className="mr-2" /> Location Details
+                                    <MapPin size={20} className="mr-2" /> {dict.donations.locationDetails}
                                 </h3>
 
                                 <ul className="space-y-2 text-plain dark:text-gray-200">
                                     <li>
-                                        Mosque:
+                                        {dict.donations.mosque}:
                                         <span className="ml-1 font-semibold">
                                             {campaign.quranCircle.mosque.name}
                                         </span>
                                     </li>
                                     <li>
-                                        Location: {campaign.quranCircle.mosque.district.name},{" "}
+                                        {dict.donations.location}: {campaign.quranCircle.mosque.district.name},{" "}
                                         {campaign.quranCircle.mosque.district.region.name} (
                                         {campaign.quranCircle.mosque.district.region.country.name})
                                     </li>

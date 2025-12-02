@@ -55,7 +55,7 @@ export default function CircleForm({ initialData, mosques }: CircleFormProps) {
         {isEdit ? `Edit Circle: ${initialData.name}` : 'Create New Quran Circle'}
       </h1>
 
-      <form ref={formRef} action={formAction} className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 space-y-5">
+      <form ref={formRef} action={formAction} className="bg-white text-gray-700 dark:bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 space-y-5">
 
         {isEdit && <input type="hidden" name="id" value={initialData.id} />}
 
@@ -92,7 +92,7 @@ export default function CircleForm({ initialData, mosques }: CircleFormProps) {
             name="mosqueId"
             defaultValue={initialData?.mosqueId || ''}
             required
-            className="w-full bg-white dark:bg-gray-700 dark:text-white border-2 border-transparent focus:border-brand-gold rounded-xl px-4 py-3 outline-none"
+            className="w-full bg-white text-gray-700 dark:bg-gray-700 dark:text-white border-2 border-transparent focus:border-brand-gold rounded-xl px-4 py-3 outline-none"
           >
             <option value="">-- Select Mosque --</option>
             {mosques.map((mosque) => (

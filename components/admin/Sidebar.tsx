@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
   Users, Map, Home, DollarSign, BookOpen, UserCheck, Menu, X, Zap,
-  Settings, Landmark, Circle, LayoutDashboard, Aperture, PartyPopper, ChessKing
+  Settings, Landmark, Circle, LayoutDashboard, Aperture, PartyPopper, ChessKing, BookTemplate, MailCheckIcon
 } from 'lucide-react';
 import { logoutAction } from '@/app/actions/auth';
 import { Button } from '../ui';
@@ -52,6 +52,14 @@ const adminNavItems = [
     ],
   },
   {
+    title: "Reporting",
+    icon: PartyPopper,
+    items: [
+      { name: "Sponsor Reporting", icon: BookTemplate, href: "/admin/sponsor-report" },
+      { name: "Email Templates", icon: MailCheckIcon, href: "/admin/email-templates" },
+    ],
+  },
+  {
     title: "Settings",
     icon: Settings,
     href: "/admin/settings",
@@ -67,7 +75,7 @@ const NavLink = ({ href, icon: Icon, name }: { href: string, icon: React.Element
     <Link
       href={href}
       className={`
-        flex items-center p-3 rounded-xl transition-colors text-sm font-medium
+        flex items-center px-3 py-2 rounded-xl transition-colors text-sm font-medium
         ${isActive
           ? 'bg-brand-green text-white dark:bg-brand-gold shadow-lg'
           : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700/50'}
@@ -107,17 +115,17 @@ export function Sidebar() {
       {/* 2. Main Sidebar Content */}
       <aside
         className={`
-          fixed top-0 left-0 h-screen w-64 p-6 bg-white dark:bg-gray-900 border-r border-gray-100 dark:border-gray-800
+          fixed top-0 left-0 h-screen w-64 px-6 py-6 bg-white dark:bg-gray-900 border-r border-gray-100 dark:border-gray-800
           transition-transform duration-300 ease-in-out z-50 md:sticky md:top-0 md:translate-x-0
           ${isOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'}
         `}
       >
 
         {/* Logo/Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-4">
           <Link href="/admin/dashboard" className="flex items-center text-xl font-extrabold text-brand-gold dark:text-brand-gold">
-         <Logo isFooter={true} className='ml-8'/>
-           <br/>
+            <Logo isFooter={true} className='ml-8' />
+            <br />
           </Link>
           <button
             onClick={toggleSidebar}
@@ -145,7 +153,7 @@ export function Sidebar() {
                   <h3 className="text-xs uppercase font-bold text-gray-400 dark:text-gray-500 mb-3 ml-1 tracking-wider">
                     {section.title}
                   </h3>
-                  <div className="space-y-1.5">
+                  <div className="space-y-1">
                     {section.items?.map((item) => (
                       <NavLink
                         key={item.href}
@@ -161,7 +169,7 @@ export function Sidebar() {
           ))}
         </nav>
         {/* Footer / Logout */}
-        <div className="absolute bottom-0 left-0 w-full px-6 pb-6 pt-4 bg-gradient-to-t from-gray-50/60 dark:from-gray-800/60 backdrop-blur-md border-t border-gray-200 dark:border-gray-700">
+        <div className="absolute bottom-0 left-0 w-full px-6 pb-2 pt-2 bg-linear-to-t from-gray-50/60 dark:from-gray-800/60 backdrop-blur-md border-t border-gray-200 dark:border-gray-700">
           <div className="flex items-center justify-between">
             <Button
               type="button"

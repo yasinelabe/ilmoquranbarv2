@@ -24,7 +24,7 @@ export default async function MosqueListPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {mosques.map((mosque) => (
-          <div key={mosque.id} className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
+          <div key={mosque.id} className="bg-white text-gray-700 dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
             <div className="flex items-start justify-between">
               <div>
                 <h3 className="font-bold text-lg text-gray-800 dark:text-white">{mosque.name}</h3>

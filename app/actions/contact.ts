@@ -1,24 +1,14 @@
 'use server'
 
-import { z } from 'zod';
+import { FormState } from '@/lib/types';
+import { ContactSchema } from '@/schema/zodSchema';
 // Assuming we would store contact messages in the DB or send an email. 
 // For now, we'll log and simulate success.
 // import { prisma } from '@/lib/db'; 
 // import { sendEmail } from '@/lib/email'; // Placeholder for actual email utility
 
-const ContactSchema = z.object({
-  fullname: z.string().min(3, "Full name is required."),
-  email: z.email("A valid email address is required."),
-  subject: z.string().min(5, "Subject is required."),
-  message: z.string().min(10, "Message must be at least 10 characters."),
-});
 
-type ContactFormState = {
-  success: boolean;
-  message: string;
-} | undefined;
-
-export async function submitContactForm(prevState: ContactFormState, formData: FormData): Promise<ContactFormState> {
+export async function submitContactForm(prevState: FormState, formData: FormData): Promise<FormState> {
   const rawData = {
     fullname: formData.get('fullname'),
     email: formData.get('email'),

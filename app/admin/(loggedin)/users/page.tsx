@@ -25,7 +25,7 @@ export default async function UsersPage() {
 
             {/* Table Wrapper */}
             <div className="
-                bg-white 
+                bg-white text-gray-700 
                 dark:bg-gray-900 
                 rounded-2xl 
                 overflow-hidden 

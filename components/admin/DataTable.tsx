@@ -55,7 +55,7 @@ export default function DataTable({
                     type="text"
                     placeholder="Search..."
                     defaultValue={searchParams.get("search") || ""}
-                    className="border px-3 py-2 rounded-xl bg-white"
+                    className="border px-3 py-2 rounded-xl bg-gray-800/90 text-white"
                     onChange={(e) => updateQuery("search", e.target.value)}
                 />
 
@@ -63,7 +63,7 @@ export default function DataTable({
                 {filters.map(filter => (
                     <select
                         key={filter.name}
-                        className="border px-3 py-2 rounded-xl bg-white"
+                        className="border px-3 py-2 rounded-xl bg-gray-800/90"
                         defaultValue={searchParams.get(filter.name) || ""}
                         onChange={(e) => updateQuery(filter.name, e.target.value)}
                     >
@@ -77,7 +77,7 @@ export default function DataTable({
             </div>
 
             {/* ==== Table ==== */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-700">
+            <div className="bg-gray-800/90 dark:bg-gray-800 rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-700">
                 <table className="w-full">
                     <thead className="bg-gray-50 dark:bg-gray-700/50 text-sm uppercase text-gray-400">
                         <tr>
@@ -116,7 +116,7 @@ export default function DataTable({
                     <button
                         disabled={page <= 1 || isPending}
                         onClick={() => updateQuery("page", String(page - 1))}
-                        className="px-4 py-2 border rounded-xl disabled:opacity-40 flex items-center gap-2"
+                        className="bg-gray-800/90 px-4 py-2 border rounded-xl disabled:opacity-40 flex items-center gap-2"
                     >
                         <ChevronLeft size={16} /> Previous
                     </button>
@@ -126,7 +126,7 @@ export default function DataTable({
                     <button
                         disabled={page >= maxPage || isPending}
                         onClick={() => updateQuery("page", String(page + 1))}
-                        className="px-4 py-2 border rounded-xl disabled:opacity-40 flex items-center gap-2"
+                        className="bg-gray-800/90 px-4 py-2 border rounded-xl disabled:opacity-40 flex items-center gap-2"
                     >
                         Next <ChevronRight size={16} />
                     </button>

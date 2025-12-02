@@ -47,7 +47,7 @@ export default function StudentForm({ initialData, quranCircles, parents }: Stud
         {isEdit ? `Edit Student: ${initialData.fullname}` : 'Enroll New Student'}
       </h1>
       
-      <form ref={formRef} action={formAction} className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 space-y-5">
+      <form ref={formRef} action={formAction} className="bg-white text-gray-700 dark:bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 space-y-5">
         
         {isEdit && <input type="hidden" name="id" value={initialData.id} />}
 
@@ -82,7 +82,7 @@ export default function StudentForm({ initialData, quranCircles, parents }: Stud
             name="sex"
             defaultValue={initialData?.sex || ''} 
             required
-            className="w-full bg-white dark:bg-gray-700 dark:text-white border-2 border-transparent focus:border-brand-gold rounded-xl px-4 py-3 outline-none"
+            className="w-full bg-white text-gray-700 dark:bg-gray-700 dark:text-white border-2 border-transparent focus:border-brand-gold rounded-xl px-4 py-3 outline-none"
           >
             <option value="">-- Select Sex --</option>
             <option value="Male">Male</option>
@@ -101,7 +101,7 @@ export default function StudentForm({ initialData, quranCircles, parents }: Stud
             name="quranCircleId"
             defaultValue={initialData?.quranCircleId || ''} 
             required
-            className="w-full bg-white dark:bg-gray-700 dark:text-white border-2 border-transparent focus:border-brand-gold rounded-xl px-4 py-3 outline-none"
+            className="w-full bg-white text-gray-700 dark:bg-gray-700 dark:text-white border-2 border-transparent focus:border-brand-gold rounded-xl px-4 py-3 outline-none"
           >
             <option value="">-- Select Quran Circle --</option>
             {quranCircles.map((circle) => (
@@ -121,7 +121,7 @@ export default function StudentForm({ initialData, quranCircles, parents }: Stud
           <select 
             name="parentId"
             defaultValue={initialData?.parentId || ''} 
-            className="w-full bg-white dark:bg-gray-700 dark:text-white border-2 border-transparent focus:border-brand-gold rounded-xl px-4 py-3 outline-none"
+            className="w-full bg-white text-gray-700 dark:bg-gray-700 dark:text-white border-2 border-transparent focus:border-brand-gold rounded-xl px-4 py-3 outline-none"
           >
             <option value="">-- No Parent Assigned --</option>
             {parents.map((parent) => (
